@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:classifieds_mobile_app/constants.dart';
+import 'package:classifieds_mobile_app/palette.dart';
 
 class RoundedButton extends StatelessWidget {
   final String text;
@@ -25,10 +25,6 @@ class RoundedButton extends StatelessWidget {
       ),
     );
   }
-
-  //Used:ElevatedButton as FlatButton is deprecated.
-  //Here we have to apply customizations to Button by inheriting the styleFrom
-
   Widget newElevatedButton() {
     return ElevatedButton(
       child: Text(

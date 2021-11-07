@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:classifieds_mobile_app/Screens/Login/login_screen.dart';
-import 'package:classifieds_mobile_app/Screens/Signup/components/background.dart';
-import 'package:classifieds_mobile_app/components/already_have_an_account_acheck.dart';
+import 'package:classifieds_mobile_app/Pages/Login/login_page.dart';
+import 'package:classifieds_mobile_app/Pages/Signup/components/background.dart';
+import 'package:classifieds_mobile_app/components/account_check.dart';
 import 'package:classifieds_mobile_app/components/rounded_button.dart';
-import 'package:classifieds_mobile_app/components/rounded_input_field.dart';
-import 'package:classifieds_mobile_app/components/rounded_password_field.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:classifieds_mobile_app/components/input_field.dart';
+import 'package:classifieds_mobile_app/components/password_field.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -27,11 +26,11 @@ class Body extends StatelessWidget {
               width: 250
             ),
             SizedBox(height: size.height * 0.03),
-            RoundedInputField(
+            InputField(
               hintText: "Your Email",
               onChanged: (value) {},
             ),
-            RoundedPasswordField(
+            PasswordField(
               onChanged: (value) {},
             ),
             RoundedButton(
@@ -40,14 +39,14 @@ class Body extends StatelessWidget {
               press: () {},
             ),
             SizedBox(height: size.height * 0.03),
-            AlreadyHaveAnAccountCheck(
+            AccountCheck(
               login: false,
               press: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return LoginScreen();
+                      return Login();
                     },
                   ),
                 );

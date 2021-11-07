@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:classifieds_mobile_app/Screens/Login/login_screen.dart';
-import 'package:classifieds_mobile_app/Screens/Signup/signup_screen.dart';
-import 'package:classifieds_mobile_app/Screens/Welcome/components/background.dart';
+import 'package:classifieds_mobile_app/Pages/Login/login_page.dart';
+import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
+import 'package:classifieds_mobile_app/Pages/Welcome/components/background.dart';
 import 'package:classifieds_mobile_app/components/rounded_button.dart';
-import 'package:classifieds_mobile_app/constants.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:classifieds_mobile_app/palette.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -27,7 +26,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return LoginScreen();
+                      return Login();
                     },
                   ),
                 );
@@ -41,7 +40,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return SignUpScreen();
+                      return SignUp();
                     },
                   ),
                 );
