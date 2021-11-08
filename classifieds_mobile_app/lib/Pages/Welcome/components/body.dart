@@ -16,7 +16,7 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: size.height * 0.13),
-            Image.asset('assets/images/welcome.png', height: 320, width: 320 ),
+            Image.asset('assets/images/welcome.png', height: 320, width: 320),
             SizedBox(height: size.height * 0.02),
             RoundedButton(
               text: "LOGIN",

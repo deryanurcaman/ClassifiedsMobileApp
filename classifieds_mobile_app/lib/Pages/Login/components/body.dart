@@ -1,3 +1,4 @@
+import 'package:classifieds_mobile_app/Pages/Main/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/Pages/Login/components/background.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
@@ -24,12 +25,8 @@ class Body extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             SizedBox(height: size.height * 0.01),
-            Image.asset(
-              "assets/images/computer.png", 
-              height: 250,
-              width: 250
-            ),
-          InputField(
+            Image.asset("assets/images/computer.png", height: 250, width: 250),
+            InputField(
               hintText: "Email",
               onChanged: (value) {},
               icon: Icons.mail,
@@ -40,7 +37,16 @@ class Body extends StatelessWidget {
             RoundedButton(
               text: "LOGIN",
               textColor: Colors.black,
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Main();
+                    },
+                  ),
+                );
+              },
             ),
             SizedBox(height: size.height * 0.03),
             AccountCheck(
