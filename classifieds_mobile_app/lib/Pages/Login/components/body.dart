@@ -30,8 +30,9 @@ class Body extends StatelessWidget {
               width: 250
             ),
           InputField(
-              hintText: "Your Email",
+              hintText: "Email",
               onChanged: (value) {},
+              icon: Icons.mail,
             ),
             PasswordField(
               onChanged: (value) {},

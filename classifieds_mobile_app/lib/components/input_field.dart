@@ -9,7 +9,7 @@ class InputField extends StatelessWidget {
   const InputField({
     Key key,
     this.hintText,
-    this.icon = Icons.mail,
+    this.icon,
     this.onChanged,
   }) : super(key: key);
 
