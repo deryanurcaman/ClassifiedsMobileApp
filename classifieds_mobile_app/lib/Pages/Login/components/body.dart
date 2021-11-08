@@ -26,10 +26,9 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.01),
             Image.asset(
               "assets/images/computer.png", 
-              height: 300,
-              width: 300
+              height: 250,
+              width: 250
             ),
-            SizedBox(height: size.height * 0.01),
           InputField(
               hintText: "Your Email",
               onChanged: (value) {},
