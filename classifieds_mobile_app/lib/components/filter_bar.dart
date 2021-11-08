@@ -15,7 +15,10 @@ class FilterBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: two),
+      decoration: BoxDecoration(
+        color: two,
+        border: Border.all(color: Colors.black),
+      ),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -37,6 +40,10 @@ class FilterBar extends StatelessWidget {
                         ),
                         Text('Electronics')
                       ]),
+                      VerticalDivider(
+                        thickness: 1,
+                        color: two,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Column(children: [
@@ -45,8 +52,12 @@ class FilterBar extends StatelessWidget {
                             iconSize: 50,
                             onPressed: () {},
                           ),
-                          Text('Household Goods')
+                          Text('Goods')
                         ]),
+                      ),
+                      VerticalDivider(
+                        thickness: 1,
+                        color: two,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
@@ -59,6 +70,10 @@ class FilterBar extends StatelessWidget {
                           Text('Stationery')
                         ]),
                       ),
+                      VerticalDivider(
+                        thickness: 1,
+                        color: two,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Column(children: [
@@ -70,6 +85,10 @@ class FilterBar extends StatelessWidget {
                           Text('Clothes')
                         ]),
                       ),
+                      VerticalDivider(
+                        thickness: 1,
+                        color: two,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Column(children: [
@@ -80,6 +99,10 @@ class FilterBar extends StatelessWidget {
                           ),
                           Text('Sport')
                         ]),
+                      ),
+                      VerticalDivider(
+                        thickness: 1,
+                        color: two,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),

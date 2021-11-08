@@ -1,4 +1,5 @@
-import 'package:classifieds_mobile_app/Pages/Main/components/body.dart';
+import 'package:classifieds_mobile_app/Pages/Home/components/body.dart';
+import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/Pages/Login/components/background.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
@@ -42,7 +43,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return Main();
+                      return Home();
                     },
                   ),
                 );
