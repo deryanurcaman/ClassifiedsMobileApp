@@ -16,7 +16,9 @@ class DetailsScreen extends StatelessWidget {
           title: Text("Detail Page"),
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
         ),
-        body: Body(product: product,),
+        body: Body(
+          product: product,
+        ),
         bottomNavigationBar: BottomBar());
   }
 }
