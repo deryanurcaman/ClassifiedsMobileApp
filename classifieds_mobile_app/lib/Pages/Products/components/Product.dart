@@ -2,14 +2,13 @@ class Product {
   final String image, name, description, seller;
   final int price, id;
 
-  Product({
-    this.id,
-    this.image,
-    this.name,
-    this.price,
-    this.description,
-    this.seller
-  });
+  Product(
+      {this.id,
+      this.image,
+      this.name,
+      this.price,
+      this.description,
+      this.seller});
 }
 
 List<Product> products = [
@@ -60,6 +59,33 @@ List<Product> products = [
     description: dummyText,
     image: "assets/images/monitor.jpg",
     seller: "Timothee",
+  ),
+];
+
+List<Product> favorite_products = [
+  Product(
+    id: 1,
+    name: "AirPods Pro",
+    price: 234,
+    description: dummyText,
+    image: "assets/images/airpods.jpg",
+    seller: "Alex",
+  ),
+  Product(
+    id: 2,
+    name: "MacBook Pro 13'' ",
+    price: 94,
+    description: dummyText,
+    image: "assets/images/macbook.jpg",
+    seller: "Sam",
+  ),
+  Product(
+    id: 3,
+    name: "iPhone 13",
+    price: 44,
+    description: dummyText,
+    image: "assets/images/iphone.jpg",
+    seller: "Caroline",
   ),
 ];
 

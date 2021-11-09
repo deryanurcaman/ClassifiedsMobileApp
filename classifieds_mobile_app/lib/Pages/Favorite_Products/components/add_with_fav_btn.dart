@@ -2,6 +2,8 @@ import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
 
+import '../favorite_products_view.dart';
+
 class AddAndFav extends StatelessWidget {
   const AddAndFav({
     Key key,
@@ -17,21 +19,28 @@ class AddAndFav extends StatelessWidget {
       children: <Widget>[
         Container(
           padding: EdgeInsets.all(8),
-          height: 60,
-          width: 60,
+          height: 50,
+          width: 50,
           decoration: BoxDecoration(
             color: Color(0xFFFF6464),
             shape: BoxShape.circle,
           ),
           child: IconButton(
-            onPressed: () {
-              if (!favorite_products.contains(product)) {
-                favorite_products.add(product);
-              }
-            },
             icon: Image.asset(
-              "assets/icons/iheart.png",
+              "assets/icons/delete.png",
             ),
+            onPressed: () {
+              favorite_products.remove(product);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return FavoriteProducts();
+                  },
+                ),
+              );
+            },
+            iconSize: 50,
           ),
         ),
         SizedBox(

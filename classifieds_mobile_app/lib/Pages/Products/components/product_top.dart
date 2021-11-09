@@ -1,4 +1,4 @@
-import 'package:classifieds_mobile_app/Pages/Products/components/product.dart';
+import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
 
@@ -17,10 +17,10 @@ class ProductTop extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          
           Padding(
             padding: const EdgeInsets.only(top: 15.0),
-            child: Text(product.name,
+            child: Text(
+              product.name,
               style: Theme.of(context)
                   .textTheme
                   .headline4
@@ -47,7 +47,7 @@ class ProductTop extends StatelessWidget {
                 child: Hero(
                   tag: "${product.id}",
                   child: Image.asset(
-                   product.image,
+                    product.image,
                     fit: BoxFit.fill,
                   ),
                 ),

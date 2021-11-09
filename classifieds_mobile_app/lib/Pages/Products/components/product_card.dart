@@ -1,7 +1,6 @@
-import 'package:classifieds_mobile_app/Pages/Products/components/product.dart';
+import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
-
 
 class ProductCard extends StatelessWidget {
   final Product product;

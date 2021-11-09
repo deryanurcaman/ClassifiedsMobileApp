@@ -1,20 +1,14 @@
+import 'package:classifieds_mobile_app/Pages/Favorite_Products/components/add_with_fav_btn.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/Pages/Products/components/description.dart';
+import 'package:classifieds_mobile_app/Pages/Products/components/product_top.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
-import 'counter_with_fav_btn.dart';
-import 'description.dart';
-import 'product_top.dart';
 
-class Body extends StatefulWidget {
+class Body extends StatelessWidget {
   final Product product;
 
   const Body({Key key, this.product}) : super(key: key);
-
-  @override
-  State<Body> createState() => _BodyState();
-}
-
-class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     // It provide us total height and width
@@ -43,12 +37,12 @@ class _BodyState extends State<Body> {
                   ),
                   child: Column(
                     children: <Widget>[
-                      Description(product: widget.product),
-                      AddAndFav(product: widget.product),
+                      Description(product: product),
+                      AddAndFav(product: product),
                     ],
                   ),
                 ),
-                ProductTop(product: widget.product)
+                ProductTop(product: product)
               ],
             ),
           )
