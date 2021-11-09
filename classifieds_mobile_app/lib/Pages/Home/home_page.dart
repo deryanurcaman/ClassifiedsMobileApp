@@ -14,16 +14,10 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
   List<Widget> _widgetOptions = [
-    Body(),
+    Home(),
     Login(),
     SignUp(),
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +25,10 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           backgroundColor: five,
           title: Text("Home Page"),
+          centerTitle: true,
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
         ),
-        body: Center(
-          child: _widgetOptions.elementAt(_selectedIndex),
-        ),
+        body: Body(),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: five,
@@ -43,7 +36,19 @@ class _HomeState extends State<Home> {
           selectedItemColor: one,
           unselectedItemColor: three,
           currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+          onTap: (int index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return _widgetOptions.elementAt(_selectedIndex);
+                },
+              ),
+            );
+          },
           items: [
             BottomNavigationBarItem(
                 icon: new Icon(EvaIcons.home), title: new Text("Home")),
