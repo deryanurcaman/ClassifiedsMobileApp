@@ -1,5 +1,6 @@
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products_view.dart';
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
+import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/detail_body.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
@@ -23,6 +24,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     Home(),
     FavoriteProducts(),
     SignUp(),
+    Offers(),
   ];
 
   @override

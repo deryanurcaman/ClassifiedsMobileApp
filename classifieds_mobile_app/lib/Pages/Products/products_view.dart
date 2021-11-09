@@ -1,6 +1,7 @@
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products_view.dart';
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
 import 'package:classifieds_mobile_app/Pages/Login/login_page.dart';
+import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/product_body.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -19,6 +20,7 @@ class _ProductsState extends State<Products> {
     Home(),
     FavoriteProducts(),
     SignUp(),
+    Offers()
   ];
 
   @override

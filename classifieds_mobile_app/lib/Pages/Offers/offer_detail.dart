@@ -1,6 +1,6 @@
-import 'package:classifieds_mobile_app/Pages/Favorite_Products/components/detail_body.dart';
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products_view.dart';
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
+import 'package:classifieds_mobile_app/Pages/Offers/components/detail_body.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
@@ -18,7 +18,7 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 3;
 
   List<Widget> _widgetOptions = [
     Home(),
@@ -33,7 +33,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: five,
-          title: Text("Detail Page"),
+          title: Text("Offers Detail Page"),
           centerTitle: true,
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
         ),

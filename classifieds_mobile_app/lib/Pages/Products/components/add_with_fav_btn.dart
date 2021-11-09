@@ -41,7 +41,9 @@ class AddAndFav extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             color: four,
-            onPressed: () {},
+            onPressed: () {if (!offers.contains(product)) {
+                offers.add(product);
+              }},
             child: Text(
               "Bid On Item".toUpperCase(),
               style: TextStyle(

@@ -15,6 +15,13 @@ class Description extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 20.0),
+          child: Text(
+            "[Waiting for the response]",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
         Text(
           "\Seller: ${product.seller}",
           style: TextStyle(fontSize: 20),

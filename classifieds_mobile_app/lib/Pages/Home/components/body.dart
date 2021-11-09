@@ -1,6 +1,7 @@
 import 'package:classifieds_mobile_app/Pages/Products/products_view.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -13,7 +14,9 @@ class Body extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(30.0),
-            child: Center(child: Text("CATEGORIES", style: TextStyle(fontSize: 30, color: Colors.black), )),
+            child: Center(child: Text("CATEGORIES", style: GoogleFonts.pacifico(
+    textStyle: TextStyle(color: five, fontSize: 32),
+  ),  )),
           ),
           RaisedButton(
             padding: EdgeInsets.all(20),

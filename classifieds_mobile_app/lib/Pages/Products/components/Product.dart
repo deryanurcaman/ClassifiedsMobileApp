@@ -89,5 +89,24 @@ List<Product> favorite_products = [
   ),
 ];
 
+List<Product> offers = [
+  Product(
+    id: 1,
+    name: "AirPods Pro",
+    price: 234,
+    description: dummyText,
+    image: "assets/images/airpods.jpg",
+    seller: "Alex",
+  ),
+  Product(
+    id: 2,
+    name: "MacBook Pro 13'' ",
+    price: 94,
+    description: dummyText,
+    image: "assets/images/macbook.jpg",
+    seller: "Sam",
+  )
+];
+
 String dummyText =
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since. When an unknown printer took a galley.";

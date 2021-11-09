@@ -42,7 +42,7 @@ class ProductTop extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(width: kDefaultPaddin),
+              SizedBox(width: 50),
               Expanded(
                 child: Hero(
                   tag: "${product.id}",

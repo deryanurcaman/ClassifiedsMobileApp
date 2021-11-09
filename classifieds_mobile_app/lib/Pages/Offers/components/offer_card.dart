@@ -1,23 +1,22 @@
 import 'dart:ui';
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
-class FavoriteProductCard extends StatefulWidget {
+class OfferCard extends StatefulWidget {
   final Product product;
   final Function press;
-  const FavoriteProductCard({
+  const OfferCard({
     Key key,
     this.product,
     this.press,
   }) : super(key: key);
 
   @override
-  State<FavoriteProductCard> createState() => _FavoriteProductCardState();
+  State<OfferCard> createState() => _OfferCardState();
 }
 
-class _FavoriteProductCardState extends State<FavoriteProductCard> {
+class _OfferCardState extends State<OfferCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -41,11 +40,15 @@ class _FavoriteProductCardState extends State<FavoriteProductCard> {
                         child: Image.asset(widget.product.image)),
                     Align(
                         alignment: Alignment.bottomRight,
-                        child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(EvaIcons.heart), iconSize: 30, color: Colors.red.shade300,)),
+                        ),
                   ],
                 )),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 5.0),
+            child: Text(
+              "[Waiting]",
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin / 4),
@@ -57,7 +60,8 @@ class _FavoriteProductCardState extends State<FavoriteProductCard> {
           Text(
             "\$${widget.product.price}",
             style: TextStyle(fontWeight: FontWeight.bold),
-          )
+          ),
+          
         ],
       ),
     );
