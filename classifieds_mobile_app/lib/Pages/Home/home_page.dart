@@ -8,7 +8,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
    appBar: AppBar(
-        backgroundColor: four,
+        backgroundColor: five,
         title: Text("Home Page"),
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
       ),

@@ -17,9 +17,9 @@ class BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      backgroundColor: four,
+      backgroundColor: five,
       iconSize: 40,
-      selectedItemColor: five,
+      selectedItemColor: one,
       unselectedItemColor: three,
       items: [
         BottomNavigationBarItem(

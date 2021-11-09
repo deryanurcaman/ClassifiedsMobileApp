@@ -32,7 +32,6 @@ class Body extends StatelessWidget {
                   ],
                 ),
               ),
-             
               ],
             ), 
           ),
@@ -46,15 +45,17 @@ class Body extends StatelessWidget {
                 child: Image.asset("assets/images/airpods.jpg", height: 150, width: 150),
               ),
               Padding(
-                padding: const EdgeInsets.all(40.0),
+                padding: EdgeInsets.all( 40.0),
                 child: Column(
                   children: [
                     Text("AirPods", style: TextStyle(fontSize: 32),),
-                    Text("Description", style: TextStyle(fontSize: 16),)
+                    Text("Description:", style: TextStyle(fontSize: 20),),
+                    Spacer(),
+                    Text("Price: 2000 ", style: TextStyle(fontSize: 18),),
+                    Text("Seller: ALex", style: TextStyle(fontSize: 18),)
                   ],
                 ),
               ),
-             
               ],
             ), 
           ),
@@ -76,7 +77,6 @@ class Body extends StatelessWidget {
                   ],
                 ),
               ),
-             
               ],
             ), 
           ),

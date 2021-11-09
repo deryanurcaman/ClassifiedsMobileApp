@@ -1,5 +1,4 @@
-import 'package:classifieds_mobile_app/Pages/Products/products.dart';
-import 'package:classifieds_mobile_app/components/bottom_bar.dart';
+import 'package:classifieds_mobile_app/Pages/Products/products_view.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,7 @@ class Body extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(30.0),
-            child: Center(child: Text("CATEGORIES", style: TextStyle(fontSize: 32, color: five), )),
+            child: Center(child: Text("CATEGORIES", style: TextStyle(fontSize: 30, color: Colors.black), )),
           ),
           RaisedButton(
             padding: EdgeInsets.all(20),
