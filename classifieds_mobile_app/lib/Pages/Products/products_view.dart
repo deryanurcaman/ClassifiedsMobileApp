@@ -1,7 +1,6 @@
 import 'package:classifieds_mobile_app/Pages/Products/components/product_body.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/components/bottom_bar.dart';
-
 import 'package:classifieds_mobile_app/palette.dart';
 
 class Products extends StatelessWidget {

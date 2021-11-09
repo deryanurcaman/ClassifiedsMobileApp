@@ -1,7 +1,6 @@
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/Pages/Products/components/product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
-
 
 class ProductTop extends StatelessWidget {
   const ProductTop({
@@ -21,7 +20,7 @@ class ProductTop extends StatelessWidget {
           
           Padding(
             padding: const EdgeInsets.only(top: 15.0),
-            child: Text("bokkkk",
+            child: Text(product.name,
               style: Theme.of(context)
                   .textTheme
                   .headline4
@@ -36,7 +35,7 @@ class ProductTop extends StatelessWidget {
                   children: [
                     TextSpan(text: "Price\n"),
                     TextSpan(
-                      text: "\$${60}",
+                      text: "\$${product.price}",
                       style: Theme.of(context).textTheme.headline4.copyWith(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
@@ -46,9 +45,9 @@ class ProductTop extends StatelessWidget {
               SizedBox(width: kDefaultPaddin),
               Expanded(
                 child: Hero(
-                  tag: "6",
+                  tag: "${product.id}",
                   child: Image.asset(
-                    "assets/images/computer.png",
+                   product.image,
                     fit: BoxFit.fill,
                   ),
                 ),

@@ -1,9 +1,8 @@
+import 'package:classifieds_mobile_app/Pages/Products/components/product.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/detail_body.dart';
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/components/bottom_bar.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class DetailsScreen extends StatelessWidget {
   final Product product;
@@ -14,7 +13,7 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: five,
-          title: Text("Home Page"),
+          title: Text("Detail Page"),
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
         ),
         body: Body(product: product,),

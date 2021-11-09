@@ -1,65 +1,65 @@
-
 class Product {
-  final String image, title, description;
+  final String image, name, description, seller;
   final int price, id;
-  
+
   Product({
     this.id,
     this.image,
-    this.title,
+    this.name,
     this.price,
     this.description,
-
+    this.seller
   });
 }
 
 List<Product> products = [
   Product(
-      id: 1,
-      title: "Office Code",
-      price: 234,
-      description: dummyText,
-      image: "assets/images/bag_1.png",
-      ),
+    id: 1,
+    name: "AirPods Pro",
+    price: 234,
+    description: dummyText,
+    image: "assets/images/airpods.jpg",
+    seller: "Alex",
+  ),
   Product(
-      id: 2,
-      title: "Belt Bag",
-      price: 234,
-      
-      description: dummyText,
-      image: "assets/images/bag_2.png",
-      ),
+    id: 2,
+    name: "MacBook Pro 13'' ",
+    price: 94,
+    description: dummyText,
+    image: "assets/images/macbook.jpg",
+    seller: "Sam",
+  ),
   Product(
-      id: 3,
-      title: "Hang Top",
-      price: 234,
-   
-      description: dummyText,
-      image: "assets/images/bag_3.png",
-      ),
+    id: 3,
+    name: "iPhone 13",
+    price: 44,
+    description: dummyText,
+    image: "assets/images/iphone.jpg",
+    seller: "Caroline",
+  ),
   Product(
-      id: 4,
-      title: "Old Fashion",
-      price: 234,
-      description: dummyText,
-      image: "assets/images/bag_4.png",
-      ),
+    id: 4,
+    name: "Urbanears",
+    price: 544,
+    description: dummyText,
+    image: "assets/images/kulaklik.png",
+    seller: "Emma",
+  ),
   Product(
-      id: 5,
-      title: "Office Code",
-      price: 234,
-
-      description: dummyText,
-      image: "assets/images/bag_5.png",
-      ),
+    id: 5,
+    name: "JBL Clip 3",
+    price: 2,
+    description: dummyText,
+    image: "assets/images/jbl.jpg",
+    seller: "Belle",
+  ),
   Product(
     id: 6,
-    title: "Office Code",
-    price: 234,
-   
+    name: "LG Monitor 27'' ",
+    price: 24,
     description: dummyText,
-    image: "assets/images/bag_6.png",
-    
+    image: "assets/images/monitor.jpg",
+    seller: "Timothee",
   ),
 ];
 

@@ -1,7 +1,6 @@
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/Pages/Products/components/product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 
 class AddAndFav extends StatelessWidget {
@@ -29,24 +28,25 @@ class AddAndFav extends StatelessWidget {
           ),
           child: Image.asset("assets/icons/iheart.png",),
         ),
-        Container(
-            margin: EdgeInsets.only(right: kDefaultPaddin),
-            height: 50,
-            width: 58,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
-              border: Border.all(
-                color: two,
+        SizedBox(
+              height: 50,
+              width: 200,
+              child: FlatButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: four,
+                onPressed: () {},
+                child: Text(
+                  "Bid On Item".toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
-            child: IconButton(
-              icon: Image.asset(
-                "assets/icons/shopping-cart.png",
-                color: five,
-              ),
-              onPressed: () {},
-            ),
-          ),
+        
       ],
     );
   }
