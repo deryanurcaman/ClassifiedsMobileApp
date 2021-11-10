@@ -1,6 +1,7 @@
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products_view.dart';
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
+import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/components/sell_body.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,11 @@ class Sell extends StatefulWidget {
 class _SellState extends State<Sell> {
   int _selectedIndex = 2;
 
-  List<Widget> _widgetOptions = [Home(), FavoriteProducts(), Sell(), Offers()];
+  List<Widget> _widgetOptions = [Home(),
+    FavoriteProducts(),
+    Sell(),
+    Offers(),
+    Posts(),];
 
   @override
   Widget build(BuildContext context) {

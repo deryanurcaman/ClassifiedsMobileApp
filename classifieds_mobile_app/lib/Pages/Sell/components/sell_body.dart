@@ -77,10 +77,10 @@ class _BodyState extends State<Body> {
                           _controllerPrice != null &&
                           _controllerDescription != null) {
                         Product newPost = Product(
-                            name: _controllerName.toString(),
-                            price: _controllerPrice.toString(),
-                            description: _controllerDescription.toString(),
-                            image: "assets/images/macbook.jpg",
+                            name: _controllerName.text,
+                            price: _controllerPrice.text,
+                            description: _controllerDescription.text,
+                            image: "assets/images/no.png",
                             seller: "Alex",
                             id: "10");
                         setState(() {

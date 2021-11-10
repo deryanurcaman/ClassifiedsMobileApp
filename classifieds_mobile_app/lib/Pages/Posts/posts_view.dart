@@ -1,20 +1,19 @@
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products_view.dart';
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
-import 'package:classifieds_mobile_app/Pages/Offers/components/offer_body.dart';
-import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
+import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
+import 'package:classifieds_mobile_app/Pages/Posts/components/post_body.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
-import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 
-class Offers extends StatefulWidget {
+class Posts extends StatefulWidget {
   @override
-  State<Offers> createState() => _OffersState();
+  State<Posts> createState() => _PostsState();
 }
 
-class _OffersState extends State<Offers> {
-  int _selectedIndex = 3;
+class _PostsState extends State<Posts> {
+  int _selectedIndex = 4;
 
   List<Widget> _widgetOptions = [
     Home(),
@@ -22,7 +21,6 @@ class _OffersState extends State<Offers> {
     Sell(),
     Offers(),
     Posts(),
-
   ];
 
   @override
@@ -30,7 +28,7 @@ class _OffersState extends State<Offers> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: five,
-          title: Text("Offers"),
+          title: Text("Posts"),
           centerTitle: true,
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
         ),

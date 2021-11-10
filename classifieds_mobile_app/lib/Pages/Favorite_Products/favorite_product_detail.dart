@@ -2,7 +2,9 @@ import 'package:classifieds_mobile_app/Pages/Favorite_Products/components/detail
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products_view.dart';
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
+import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -23,8 +25,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
   List<Widget> _widgetOptions = [
     Home(),
     FavoriteProducts(),
-    SignUp(),
-    Offers(),   
+    Sell(),
+    Offers(),
+    Posts(),
 
   ];
 

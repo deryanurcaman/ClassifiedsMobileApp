@@ -1,6 +1,7 @@
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products_view.dart';
 import 'package:classifieds_mobile_app/Pages/Home/components/body.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
+import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class _HomeState extends State<Home> {
     FavoriteProducts(),
     Sell(),
     Offers(),
+    Posts(),
   ];
 
   @override
