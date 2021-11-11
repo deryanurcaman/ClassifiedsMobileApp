@@ -1,27 +1,27 @@
-import 'package:classifieds_mobile_app/components/rounded_button_login.dart';
+import 'package:classifieds_mobile_app/components/rounded_button_signup.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/components/text_field.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 
-class PasswordField extends StatefulWidget {
+class PasswordField2 extends StatefulWidget {
   final ValueChanged<String> onChanged;
-  const PasswordField({
+  const PasswordField2({
     Key ? key,
     required this.onChanged,
   }) : super(key: key);
 
   @override
-  State<PasswordField> createState() => _PasswordFieldState();
+  State<PasswordField2> createState() => _PasswordField2State();
 }
 
-class _PasswordFieldState extends State<PasswordField> {
- var textPassword = RoundedButtonLoginState.textPassword;
-  var validatePassword = RoundedButtonLoginState.validatePassword;
+class _PasswordField2State extends State<PasswordField2> {
+ var textPassword2 = RoundedButtonSignupState.textPassword2;
+  var validatePassword2 = RoundedButtonSignupState.validatePassword2;
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextField(
-        controller: textPassword,
+        controller: textPassword2,
         obscureText: true,
         onChanged: widget.onChanged,
         cursorColor: two,

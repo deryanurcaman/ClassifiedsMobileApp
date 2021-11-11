@@ -1,12 +1,31 @@
+import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
+import 'package:classifieds_mobile_app/components/input_field2.dart';
+import 'package:classifieds_mobile_app/components/input_field3.dart';
+import 'package:classifieds_mobile_app/components/input_field4.dart';
+import 'package:classifieds_mobile_app/components/password_field2.dart';
+import 'package:classifieds_mobile_app/components/rounded_button_signup.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/Pages/Login/login_page.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/components/background.dart';
 import 'package:classifieds_mobile_app/components/account_check.dart';
-import 'package:classifieds_mobile_app/components/rounded_button.dart';
+import 'package:classifieds_mobile_app/components/rounded_button_login.dart';
 import 'package:classifieds_mobile_app/components/input_field.dart';
 import 'package:classifieds_mobile_app/components/password_field.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  var textName2 = RoundedButtonSignupState.textName2;
+  var validateName2 = RoundedButtonSignupState.validateName2;
+  var textName3 = RoundedButtonSignupState.textName3;
+  var validateName3 = RoundedButtonSignupState.validateName3;
+  var textName4 = RoundedButtonSignupState.textName4;
+  var validateName4 = RoundedButtonSignupState.validateName4;
+  var textPassword2 = RoundedButtonSignupState.textPassword2;
+  var validatePassword2 = RoundedButtonSignupState.validatePassword2;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,28 +46,48 @@ class Body extends StatelessWidget {
               width: 200
             ),
             SizedBox(height: size.height * 0.03),
-            InputField(
+            InputField2(
               hintText: "Name",
               onChanged: (value) {},
               icon: Icons.person,
             ),
-            InputField(
+            InputField3(
               hintText: "Surname",
               onChanged: (value) {},
               icon: Icons.person,
             ),
-            InputField(
+            InputField4(
               hintText: "Email",
               onChanged: (value) {},
               icon: Icons.mail,
             ),
-            PasswordField(
+            PasswordField2(
               onChanged: (value) {},
             ),
-            RoundedButton(
+            RoundedButtonSignup(
               text: "SIGN UP",
               textColor: Colors.black,
-              press: () {},
+              press: () {
+                setState(() {
+                  textName2.text.isEmpty ? validateName2 = true : validateName2 = false;
+                  textName3.text.isEmpty ? validateName3 = true : validateName3 = false;
+                  textName4.text.isEmpty ? validateName4 = true : validateName4 = false;
+                  textPassword2.text.isEmpty ? validatePassword2 = true : validatePassword2 = false;
+                });
+                print(textName2.text);
+                print(textName3.text);
+                print(textName4.text);
+                if(validateName2 == false && validateName3 == false && validateName4 == false && validatePassword2 == false){
+                
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Home();
+                    },
+                  ),
+                );}
+              },
             ),
             SizedBox(height: size.height * 0.02),
             AccountCheck(

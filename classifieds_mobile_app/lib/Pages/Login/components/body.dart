@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/Pages/Login/components/background.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
 import 'package:classifieds_mobile_app/components/account_check.dart';
-import 'package:classifieds_mobile_app/components/rounded_button.dart';
+import 'package:classifieds_mobile_app/components/rounded_button_login.dart';
 import 'package:classifieds_mobile_app/components/input_field.dart';
 import 'package:classifieds_mobile_app/components/password_field.dart';
 
 class Body extends StatefulWidget {
   const Body({
-    Key? key,
+    Key ? key,
   }) : super(key: key);
 
   @override
@@ -17,11 +17,12 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  var textName = RoundedButtonState.textName;
-  var validateName = RoundedButtonState.validateName;
-  var textPassword = RoundedButtonState.textPassword;
-  var validatePassword = RoundedButtonState.validatePassword;
+  var textName = RoundedButtonLoginState.textName;
+  var validateName = RoundedButtonLoginState.validateName;
+  var textPassword = RoundedButtonLoginState.textPassword;
+  var validatePassword = RoundedButtonLoginState.validatePassword;
 
+  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -44,28 +45,23 @@ class _BodyState extends State<Body> {
             PasswordField(
               onChanged: (value) {},
             ),
-            RoundedButton(
+            RoundedButtonLogin(
               text: "LOGIN",
               textColor: Colors.black,
               press: () {
                 setState(() {
-                  textName.text.isEmpty
-                      ? validateName = true
-                      : validateName = false;
-                  textPassword.text.isEmpty
-                      ? validatePassword = true
-                      : validatePassword = false;
+                  textName.text.isEmpty ? validateName = true : validateName = false;
+                  textPassword.text.isEmpty ? validatePassword = true : validatePassword = false;
                 });
-                if (validateName == false && validatePassword == false) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Home();
-                      },
-                    ),
-                  );
-                }
+                if(validateName == false && validatePassword == false){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Home();
+                    },
+                  ),
+                );}
               },
             ),
             SizedBox(height: size.height * 0.03),

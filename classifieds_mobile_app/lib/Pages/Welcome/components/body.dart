@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/Pages/Login/login_page.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
 import 'package:classifieds_mobile_app/Pages/Welcome/components/background.dart';
-import 'package:classifieds_mobile_app/components/rounded_button.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 
 class Body extends StatelessWidget {
@@ -33,7 +32,7 @@ class Body extends StatelessWidget {
                 );
               },
             ),
-            RoundedButton(
+            RoundedButtonMain(
               text: "SIGN UP",
               color: three,
               press: () {
