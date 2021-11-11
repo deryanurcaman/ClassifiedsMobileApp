@@ -103,7 +103,7 @@ class _BodyState extends State<Body> {
     try {
       final pickedFile = await _picker.getImage(source: ImageSource.gallery);
       setState(() {
-        _imageFile = pickedFile;
+        _imageFile = pickedFile!;
       });
     } catch (e) {
       print("Image picker error " + e.toString());
