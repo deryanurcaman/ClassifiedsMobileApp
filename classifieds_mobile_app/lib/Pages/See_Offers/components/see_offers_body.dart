@@ -94,54 +94,66 @@ class _BodyState extends State<Body> {
                   padding: EdgeInsets.only(top: 40),
                   height: 100,
                   width: 120,
-                  child: RaisedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return Posts();
-                          },
-                        ),
-                      );
-                    },
-                    child: Text(
-                      "Accept",
-                      style: TextStyle(color: one, fontSize: 20),
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(29),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: four,
+                        fixedSize: Size(200, 50),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Posts();
+                            },
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Accept",
+                        style: TextStyle(color: one, fontSize: 20),
+                      ),
                     ),
-                    color: four,
                   ),
                 ),
               ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Container(
-              padding: EdgeInsets.only(top: 40),
-              height: 100,
-              width: 120,
-              child: RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Posts();
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Container(
+                  padding: EdgeInsets.only(top: 40),
+                  height: 100,
+                  width: 120,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(29),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: four,
+                        fixedSize: Size(200, 50),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return Posts();
+                            },
+                          ),
+                        );
                       },
+                      child: Text(
+                        "Deny",
+                        style: TextStyle(color: one, fontSize: 20),
+                      ),
                     ),
-                  );
-                },
-                child: Text(
-                  "Deny",
-                  style: TextStyle(color: one, fontSize: 20),
+                  ),
                 ),
-                color: four,
-              ),
-          ),
-            )
+              )
             ],
-            
           ),
-         
         ]),
       ),
     );

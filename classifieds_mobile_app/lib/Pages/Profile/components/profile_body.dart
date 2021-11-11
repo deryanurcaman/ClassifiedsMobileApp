@@ -69,35 +69,33 @@ class _BodyState extends State<Body> {
             ]),
           ),
           Container(
-            padding: EdgeInsets.only(top: 40),
-            height: 100,
-            width: 120,
-margin: EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.only(top: 40),
+              height: 100,
+              width: 120,
+              margin: EdgeInsets.symmetric(vertical: 10),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(29),
-                child:
-             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: four,
-                fixedSize: Size(200, 50),
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return Login();
-                    },
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: four,
+                    fixedSize: Size(200, 50),
                   ),
-                );
-              },
-              child: Text(
-                "Log Out",
-                style: TextStyle(color: one, fontSize: 20),
-              ),
-            ),
-          )
-          ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Login();
+                        },
+                      ),
+                    );
+                  },
+                  child: Text(
+                    "Log Out",
+                    style: TextStyle(color: one, fontSize: 20),
+                  ),
+                ),
+              )),
         ]),
       ),
     );
