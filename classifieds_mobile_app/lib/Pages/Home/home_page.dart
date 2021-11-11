@@ -75,9 +75,9 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
                 icon: new Icon(EvaIcons.plus), title: new Text("Sell")),
             BottomNavigationBarItem(
-                icon: new Icon(EvaIcons.inbox), title: new Text("Offers")),
+                icon: new Icon(EvaIcons.inbox), title: new Text("My Offers")),
             BottomNavigationBarItem(
-                icon: new Icon(EvaIcons.image), title: new Text("Posts")),
+                icon: new Icon(EvaIcons.image), title: new Text("My Posts")),
           ],
         ));
   }

@@ -25,16 +25,35 @@ class AddAndFav extends StatelessWidget {
           //   color: Color(0xFFFF6464),
           //   shape: BoxShape.rectangle,
           // ),
-          child: ElevatedButton(
-            child: Text(
-              "Edit",
-              style: TextStyle(fontSize: 20),
-            ),
-            style: ElevatedButton.styleFrom(
-              primary: four,
-              fixedSize: Size(200, 50),
-            ),
-            onPressed: () {},
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: Text(
+                  "Edit",
+                  style: TextStyle(fontSize: 20),
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: four,
+                  fixedSize: Size(200, 50),
+                ),
+                onPressed: () {},
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: ElevatedButton(
+                  child: Text(
+                    "See offers for this product",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: four,
+                    fixedSize: Size(300, 50),
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+            ],
           ),
         ),
         // SizedBox(
