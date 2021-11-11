@@ -19,48 +19,51 @@ class AddAndFav extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Container(
-          // padding: EdgeInsets.all(8),
-          // height: 50,
-          // width: 200,
-          // decoration: BoxDecoration(
-          //   color: Color(0xFFFF6464),
-          //   shape: BoxShape.rectangle,
-          // ),
           child: Column(
             children: [
-              ElevatedButton(
-                child: Text(
-                  "Edit",
-                  style: TextStyle(fontSize: 20),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: four,
-                  fixedSize: Size(200, 50),
-                ),
-                onPressed: () {},
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
+              Container(margin: EdgeInsets.symmetric(vertical: 10),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(29),
                 child: ElevatedButton(
                   child: Text(
-                    "See offers for this product",
+                    "Edit",
                     style: TextStyle(fontSize: 20),
                   ),
                   style: ElevatedButton.styleFrom(
                     primary: four,
-                    fixedSize: Size(300, 50),
+                    fixedSize: Size(200, 50),
                   ),
-                  onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SeeOffers();
-                      },
+                  onPressed: () {},
+                ),
+              ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(29),
+                child: ElevatedButton(
+                    child: Text(
+                      "See offers for this product",
+                      style: TextStyle(fontSize: 20),
                     ),
-                  );
-                },
+                    style: ElevatedButton.styleFrom(
+                      primary: four,
+                      fixedSize: Size(300, 50),
+                    ),
+                    onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SeeOffers();
+                        },
+                      ),
+                    );
+                  },
+                  ),
+                ),
                 ),
               ),
             ],

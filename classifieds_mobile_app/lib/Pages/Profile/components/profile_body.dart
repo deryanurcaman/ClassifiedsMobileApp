@@ -72,7 +72,15 @@ class _BodyState extends State<Body> {
             padding: EdgeInsets.only(top: 40),
             height: 100,
             width: 120,
-            child: RaisedButton(
+margin: EdgeInsets.symmetric(vertical: 10),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(29),
+                child:
+             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: four,
+                fixedSize: Size(200, 50),
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -87,9 +95,9 @@ class _BodyState extends State<Body> {
                 "Log Out",
                 style: TextStyle(color: one, fontSize: 20),
               ),
-              color: four,
             ),
           )
+          ),
         ]),
       ),
     );

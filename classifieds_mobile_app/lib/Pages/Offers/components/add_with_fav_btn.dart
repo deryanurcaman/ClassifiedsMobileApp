@@ -24,26 +24,33 @@ class AddAndFav extends StatelessWidget {
           //   color: Color(0xFFFF6464),
           //   shape: BoxShape.rectangle,
           // ),
-          child: ElevatedButton(
-            child: Text(
-              "Withdraw Offer",
-              style: TextStyle(fontSize: 20),
+          child: Container(
+            margin: EdgeInsets.symmetric(vertical: 10),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(29),
+                child:
+             ElevatedButton(
+              child: Text(
+                "Withdraw Offer",
+                style: TextStyle(fontSize: 20),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary: four,
+                fixedSize: Size(200, 50),
+              ),
+              onPressed: () {
+                offers.remove(product);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Offers();
+                    },
+                  ),
+                );
+              },
             ),
-            style: ElevatedButton.styleFrom(
-              primary: four,
-              fixedSize: Size(200, 50),
-            ),
-            onPressed: () {
-              offers.remove(product);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return Offers();
-                  },
-                ),
-              );
-            },
+          ),
           ),
         ),
         // SizedBox(
