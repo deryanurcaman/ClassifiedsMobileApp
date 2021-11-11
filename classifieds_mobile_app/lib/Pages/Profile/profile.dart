@@ -1,21 +1,20 @@
-import 'package:classifieds_mobile_app/Pages/Favorite_Products/components/favorite_product_body.dart';
+import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products_view.dart';
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
-import 'package:classifieds_mobile_app/Pages/Profile/profile.dart';
+import 'package:classifieds_mobile_app/Pages/Profile/components/profile_body.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
-import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 
-class FavoriteProducts extends StatefulWidget {
+class Profile extends StatefulWidget {
   @override
-  State<FavoriteProducts> createState() => _FavoriteProductsState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _FavoriteProductsState extends State<FavoriteProducts> {
-  int _selectedIndex = 1;
+class _ProfileState extends State<Profile> {
+  int _selectedIndex = 0;
 
   List<Widget> _widgetOptions = [
     Home(),
@@ -28,24 +27,12 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: two,
         appBar: AppBar(
           backgroundColor: five,
-          title: Text("Favorite Products"),
+          title: Text("Profile"),
           centerTitle: true,
-          actions: [
-            IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Profile();
-                      },
-                    ),
-                  );
-                },
-                icon: Icon(Icons.person))
-          ],
+          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 15.0),
@@ -55,7 +42,7 @@ class _FavoriteProductsState extends State<FavoriteProducts> {
           type: BottomNavigationBarType.fixed,
           backgroundColor: five,
           iconSize: 40,
-          selectedItemColor: one,
+          selectedItemColor: three,
           unselectedItemColor: three,
           currentIndex: _selectedIndex,
           onTap: (int index) {

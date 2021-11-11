@@ -8,7 +8,7 @@ import 'product_top.dart';
 class Body extends StatefulWidget {
   final Product product;
 
-  const Body({Key key, this.product}) : super(key: key);
+  const Body({Key? key, required this.product}) : super(key: key);
 
   @override
   State<Body> createState() => _BodyState();

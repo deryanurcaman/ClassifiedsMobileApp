@@ -2,6 +2,7 @@ import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
+import 'package:classifieds_mobile_app/Pages/Profile/profile.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/components/sell_body.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
@@ -15,20 +16,36 @@ class Sell extends StatefulWidget {
 class _SellState extends State<Sell> {
   int _selectedIndex = 2;
 
-  List<Widget> _widgetOptions = [Home(),
+  List<Widget> _widgetOptions = [
+    Home(),
     FavoriteProducts(),
     Sell(),
     Offers(),
-    Posts(),];
+    Posts(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: two,
         appBar: AppBar(
           backgroundColor: five,
           title: Text("Sell A Product"),
           centerTitle: true,
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Profile();
+                      },
+                    ),
+                  );
+                },
+                icon: Icon(Icons.person))
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 15.0),

@@ -2,6 +2,7 @@ import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/components/offer_body.dart';
 import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
+import 'package:classifieds_mobile_app/Pages/Profile/profile.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -22,7 +23,6 @@ class _OffersState extends State<Offers> {
     Sell(),
     Offers(),
     Posts(),
-
   ];
 
   @override
@@ -32,7 +32,20 @@ class _OffersState extends State<Offers> {
           backgroundColor: five,
           title: Text("Offers"),
           centerTitle: true,
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Profile();
+                      },
+                    ),
+                  );
+                },
+                icon: Icon(Icons.person))
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 15.0),

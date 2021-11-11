@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 
 class OfferCard extends StatefulWidget {
   final Product product;
-  final Function press;
+  final VoidCallback press;
   const OfferCard({
-    Key key,
-    this.product,
-    this.press,
+    Key? key,
+    required this.product,
+    required this.press,
   }) : super(key: key);
 
   @override
@@ -39,8 +39,8 @@ class _OfferCardState extends State<OfferCard> {
                         height: 240,
                         child: Image.asset(widget.product.image)),
                     Align(
-                        alignment: Alignment.bottomRight,
-                        ),
+                      alignment: Alignment.bottomRight,
+                    ),
                   ],
                 )),
           ),
@@ -61,7 +61,6 @@ class _OfferCardState extends State<OfferCard> {
             "\$${widget.product.price}",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          
         ],
       ),
     );

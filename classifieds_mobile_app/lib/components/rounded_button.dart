@@ -3,12 +3,12 @@ import 'package:classifieds_mobile_app/palette.dart';
 
 class RoundedButton extends StatefulWidget {
   final String text;
-  final Function press;
+  final VoidCallback press;
   final Color color, textColor;
   const RoundedButton({
-    Key key,
-    this.text,
-    this.press,
+    Key? key,
+    required this.text,
+    required this.press,
     this.color = two,
     this.textColor = Colors.white,
   }) : super(key: key);
@@ -46,7 +46,9 @@ class RoundedButtonState extends State<RoundedButton> {
           primary: widget.color,
           padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
           textStyle: TextStyle(
-              color: widget.textColor, fontSize: 14, fontWeight: FontWeight.w500)),
+              color: widget.textColor,
+              fontSize: 14,
+              fontWeight: FontWeight.w500)),
     );
   }
 }

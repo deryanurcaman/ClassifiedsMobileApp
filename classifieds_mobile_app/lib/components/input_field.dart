@@ -8,10 +8,10 @@ class InputField extends StatefulWidget {
   final IconData icon;
   final ValueChanged<String> onChanged;
   const InputField({
-    Key key,
-    this.hintText,
-    this.icon,
-    this.onChanged,
+    Key? key,
+    required this.hintText,
+    required this.icon,
+    required this.onChanged,
   }) : super(key: key);
 
   @override

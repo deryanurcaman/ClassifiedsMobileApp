@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 class FavoriteProductCard extends StatefulWidget {
   final Product product;
-  final Function press;
+  final VoidCallback press;
   const FavoriteProductCard({
-    Key key,
-    this.product,
-    this.press,
+    Key? key,
+    required this.product,
+    required this.press,
   }) : super(key: key);
 
   @override
@@ -42,8 +42,11 @@ class _FavoriteProductCardState extends State<FavoriteProductCard> {
                     Align(
                         alignment: Alignment.bottomRight,
                         child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(EvaIcons.heart), iconSize: 30, color: Colors.red.shade300,)),
+                          onPressed: () {},
+                          icon: Icon(EvaIcons.heart),
+                          iconSize: 30,
+                          color: Colors.red.shade300,
+                        )),
                   ],
                 )),
           ),

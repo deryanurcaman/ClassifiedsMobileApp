@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
-  final Function press;
+  final VoidCallback press;
   const ProductCard({
-    Key key,
-    this.product,
-    this.press,
+    Key? key,
+    required this.product,
+    required this.press,
   }) : super(key: key);
 
   @override

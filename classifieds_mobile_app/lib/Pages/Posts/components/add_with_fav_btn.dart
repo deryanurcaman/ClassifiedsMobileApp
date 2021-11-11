@@ -4,11 +4,10 @@ import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
 
-
 class AddAndFav extends StatelessWidget {
   const AddAndFav({
-    Key key,
-    @required this.product,
+    Key? key,
+    required this.product,
   }) : super(key: key);
 
   final Product product;
@@ -27,10 +26,15 @@ class AddAndFav extends StatelessWidget {
           //   shape: BoxShape.rectangle,
           // ),
           child: ElevatedButton(
-            child: Text("Edit", style: TextStyle(fontSize: 20),),
-            style: ElevatedButton.styleFrom(primary: four, fixedSize: Size(200, 50),),
-            onPressed: () {
-            },
+            child: Text(
+              "Edit",
+              style: TextStyle(fontSize: 20),
+            ),
+            style: ElevatedButton.styleFrom(
+              primary: four,
+              fixedSize: Size(200, 50),
+            ),
+            onPressed: () {},
           ),
         ),
         // SizedBox(

@@ -1,4 +1,3 @@
-import 'package:classifieds_mobile_app/Pages/Home/components/body.dart';
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/Pages/Login/components/background.dart';
@@ -10,7 +9,7 @@ import 'package:classifieds_mobile_app/components/password_field.dart';
 
 class Body extends StatefulWidget {
   const Body({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -23,7 +22,6 @@ class _BodyState extends State<Body> {
   var textPassword = RoundedButtonState.textPassword;
   var validatePassword = RoundedButtonState.validatePassword;
 
-  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -51,18 +49,23 @@ class _BodyState extends State<Body> {
               textColor: Colors.black,
               press: () {
                 setState(() {
-                  textName.text.isEmpty ? validateName = true : validateName = false;
-                  textPassword.text.isEmpty ? validatePassword = true : validatePassword = false;
+                  textName.text.isEmpty
+                      ? validateName = true
+                      : validateName = false;
+                  textPassword.text.isEmpty
+                      ? validatePassword = true
+                      : validatePassword = false;
                 });
-                if(validateName == false && validatePassword == false){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return Home();
-                    },
-                  ),
-                );}
+                if (validateName == false && validatePassword == false) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Home();
+                      },
+                    ),
+                  );
+                }
               },
             ),
             SizedBox(height: size.height * 0.03),

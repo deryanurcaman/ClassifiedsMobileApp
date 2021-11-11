@@ -3,12 +3,12 @@ import 'package:classifieds_mobile_app/palette.dart';
 
 class RoundedButtonMain extends StatelessWidget {
   final String text;
-  final Function press;
+  final VoidCallback press;
   final Color color, textColor;
   const RoundedButtonMain({
-    Key key,
-    this.text,
-    this.press,
+    Key? key,
+    required this.text,
+    required this.press,
     this.color = two,
     this.textColor = Colors.white,
   }) : super(key: key);
@@ -25,6 +25,7 @@ class RoundedButtonMain extends StatelessWidget {
       ),
     );
   }
+
   Widget newElevatedButton() {
     return ElevatedButton(
       child: Text(

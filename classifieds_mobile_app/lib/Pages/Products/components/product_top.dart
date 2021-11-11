@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class ProductTop extends StatelessWidget {
   const ProductTop({
-    Key key,
-    @required this.product,
+    Key? key,
+    required this.product,
   }) : super(key: key);
 
   final Product product;
@@ -23,7 +23,7 @@ class ProductTop extends StatelessWidget {
               product.name,
               style: Theme.of(context)
                   .textTheme
-                  .headline4
+                  .headline4!
                   .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
             ),
           ),
@@ -36,7 +36,7 @@ class ProductTop extends StatelessWidget {
                     TextSpan(text: "Price\n"),
                     TextSpan(
                       text: "\$${product.price}",
-                      style: Theme.of(context).textTheme.headline4.copyWith(
+                      style: Theme.of(context).textTheme.headline4!.copyWith(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
                   ],

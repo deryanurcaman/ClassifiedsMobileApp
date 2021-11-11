@@ -3,11 +3,11 @@ import 'package:classifieds_mobile_app/palette.dart';
 
 class AccountCheck extends StatelessWidget {
   final bool login;
-  final Function press;
+  final VoidCallback press;
   const AccountCheck({
-    Key key,
+    Key? key,
     this.login = true,
-    this.press,
+    required this.press,
   }) : super(key: key);
 
   @override
@@ -16,7 +16,9 @@ class AccountCheck extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          login ? "Don't you have an account? Then " : "Already have an account? Then ",
+          login
+              ? "Don't you have an account? Then "
+              : "Already have an account? Then ",
           style: TextStyle(color: five),
         ),
         GestureDetector(

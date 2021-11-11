@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 
 class PostCard extends StatefulWidget {
   final Product product;
-  final Function press;
+  final VoidCallback press;
   const PostCard({
-    Key key,
-    this.product,
-    this.press,
+    Key? key,
+    required this.product,
+    required this.press,
   }) : super(key: key);
 
   @override
@@ -39,8 +39,8 @@ class _PostCardState extends State<PostCard> {
                         height: 240,
                         child: Image.asset(widget.product.image)),
                     Align(
-                        alignment: Alignment.bottomRight,
-                        ),
+                      alignment: Alignment.bottomRight,
+                    ),
                   ],
                 )),
           ),
@@ -55,7 +55,6 @@ class _PostCardState extends State<PostCard> {
             "\$${widget.product.price}",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          
         ],
       ),
     );

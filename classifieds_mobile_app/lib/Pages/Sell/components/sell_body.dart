@@ -2,18 +2,17 @@ import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../palette.dart';
 
 class Body extends StatefulWidget {
-  const Body({Key key}) : super(key: key);
+  const Body({Key? key}) : super(key: key);
 
   @override
   State<Body> createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  PickedFile _imageFile;
+  late PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
 
   @override
@@ -22,7 +21,6 @@ class _BodyState extends State<Body> {
     TextEditingController _controllerPrice = TextEditingController();
     TextEditingController _controllerDescription = TextEditingController();
     return Container(
-      color: two,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
@@ -108,7 +106,7 @@ class _BodyState extends State<Body> {
         _imageFile = pickedFile;
       });
     } catch (e) {
-      print("Image picker error " + e);
+      print("Image picker error " + e.toString());
     }
   }
 }

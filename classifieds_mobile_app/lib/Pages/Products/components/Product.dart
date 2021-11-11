@@ -3,12 +3,12 @@ class Product {
   final String price, id;
 
   Product(
-      {this.id,
-      this.image,
-      this.name,
-      this.price,
-      this.description,
-      this.seller});
+      {required this.id,
+      required this.image,
+      required this.name,
+      required this.price,
+      required this.description,
+      required this.seller});
 }
 
 List<Product> products = [

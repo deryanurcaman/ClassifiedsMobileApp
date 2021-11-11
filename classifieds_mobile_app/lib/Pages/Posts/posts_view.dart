@@ -2,6 +2,7 @@ import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products
 import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Posts/components/post_body.dart';
+import 'package:classifieds_mobile_app/Pages/Profile/profile.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,20 @@ class _PostsState extends State<Posts> {
           backgroundColor: five,
           title: Text("Posts"),
           centerTitle: true,
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Profile();
+                      },
+                    ),
+                  );
+                },
+                icon: Icon(Icons.person))
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 15.0),

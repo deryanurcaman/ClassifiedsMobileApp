@@ -6,8 +6,8 @@ import '../favorite_products_view.dart';
 
 class AddAndFav extends StatelessWidget {
   const AddAndFav({
-    Key key,
-    @required this.product,
+    Key? key,
+    required this.product,
   }) : super(key: key);
 
   final Product product;
@@ -50,9 +50,13 @@ class AddAndFav extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             color: four,
-            onPressed: () {{if (!offers.contains(product)) {
-                offers.add(product);
-              }}},
+            onPressed: () {
+              {
+                if (!offers.contains(product)) {
+                  offers.add(product);
+                }
+              }
+            },
             child: Text(
               "Bid On Item".toUpperCase(),
               style: TextStyle(

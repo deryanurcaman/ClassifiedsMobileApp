@@ -7,10 +7,10 @@ class BottomBar extends StatelessWidget {
   final IconData icon;
   final ValueChanged<String> onChanged;
   const BottomBar({
-    Key key,
-    this.hintText,
-    this.icon,
-    this.onChanged,
+    Key? key,
+    required this.hintText,
+    required this.icon,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -23,27 +23,15 @@ class BottomBar extends StatelessWidget {
       unselectedItemColor: three,
       items: [
         BottomNavigationBarItem(
-          icon: new Icon(EvaIcons.home),
-          title: new Text("Home")
-        ),
+            icon: new Icon(EvaIcons.home), title: new Text("Home")),
         BottomNavigationBarItem(
-          icon: new Icon(EvaIcons.heart),
-          title: new Text("Favorites")
-        ),
+            icon: new Icon(EvaIcons.heart), title: new Text("Favorites")),
         BottomNavigationBarItem(
-          icon: new Icon(EvaIcons.plus),
-          title: new Text("Sell")
-        ),
+            icon: new Icon(EvaIcons.plus), title: new Text("Sell")),
         BottomNavigationBarItem(
-          icon: new Icon(EvaIcons.inbox),
-          title: new Text("Offers")
-        ),
+            icon: new Icon(EvaIcons.inbox), title: new Text("Offers")),
         BottomNavigationBarItem(
-          icon: new Icon(EvaIcons.image),
-          title: new Text("Posts")
-        ),
-        
-
+            icon: new Icon(EvaIcons.image), title: new Text("Posts")),
       ],
     );
   }
