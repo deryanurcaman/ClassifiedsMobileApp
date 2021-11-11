@@ -1,6 +1,7 @@
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_products_view.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/Pages/See_Offers/see_offers.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
 
@@ -50,7 +51,16 @@ class AddAndFav extends StatelessWidget {
                     primary: four,
                     fixedSize: Size(300, 50),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SeeOffers();
+                      },
+                    ),
+                  );
+                },
                 ),
               ),
             ],

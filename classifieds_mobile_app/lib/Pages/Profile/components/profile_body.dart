@@ -21,9 +21,12 @@ class _BodyState extends State<Body> {
             height: 100,
             color: three,
             child: Row(children: [
-              Text(
-                "Name: ",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Name: ",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
               Text(
                 "Alex",
@@ -35,9 +38,12 @@ class _BodyState extends State<Body> {
             height: 100,
             color: three,
             child: Row(children: [
-              Text(
-                "Surname: ",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Surname: ",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
               Text(
                 "Smith",
@@ -49,9 +55,12 @@ class _BodyState extends State<Body> {
             height: 100,
             color: three,
             child: Row(children: [
-              Text(
-                "Email: ",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Email: ",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
               Text(
                 "alex.smith@gmail.com",
