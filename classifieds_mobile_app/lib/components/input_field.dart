@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/components/text_field.dart';
 import 'package:classifieds_mobile_app/palette.dart';
+import 'package:classifieds_mobile_app/components/rounded_button.dart';
 
-class InputField extends StatelessWidget {
+class InputField extends StatefulWidget {
   final String hintText;
   final IconData icon;
   final ValueChanged<String> onChanged;
@@ -14,17 +15,26 @@ class InputField extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<InputField> createState() => _InputFieldState();
+}
+
+class _InputFieldState extends State<InputField> {
+  var textName = RoundedButtonState.textName;
+  var validateName = RoundedButtonState.validateName;
+  @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextField(
-        onChanged: onChanged,
+        controller: textName,
+        onChanged: widget.onChanged,
         cursorColor: one,
         decoration: InputDecoration(
+          errorText: validateName ? 'Value Can\'t Be Empty' : null,
           icon: Icon(
-            icon,
+            widget.icon,
             color: two,
           ),
-          hintText: hintText,
+          hintText: widget.hintText,
           border: InputBorder.none,
         ),
       ),

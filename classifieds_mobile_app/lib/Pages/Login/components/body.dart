@@ -8,11 +8,22 @@ import 'package:classifieds_mobile_app/components/rounded_button.dart';
 import 'package:classifieds_mobile_app/components/input_field.dart';
 import 'package:classifieds_mobile_app/components/password_field.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({
     Key key,
   }) : super(key: key);
 
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  var textName = RoundedButtonState.textName;
+  var validateName = RoundedButtonState.validateName;
+  var textPassword = RoundedButtonState.textPassword;
+  var validatePassword = RoundedButtonState.validatePassword;
+
+  
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -39,6 +50,11 @@ class Body extends StatelessWidget {
               text: "LOGIN",
               textColor: Colors.black,
               press: () {
+                setState(() {
+                  textName.text.isEmpty ? validateName = true : validateName = false;
+                  textPassword.text.isEmpty ? validatePassword = true : validatePassword = false;
+                });
+                if(validateName == false && validatePassword == false){
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -46,7 +62,7 @@ class Body extends StatelessWidget {
                       return Home();
                     },
                   ),
-                );
+                );}
               },
             ),
             SizedBox(height: size.height * 0.03),

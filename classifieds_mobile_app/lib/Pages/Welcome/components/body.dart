@@ -1,3 +1,4 @@
+import 'package:classifieds_mobile_app/components/rounded_button_main.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/Pages/Login/login_page.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/signup_page.dart';
@@ -18,7 +19,7 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.13),
             Image.asset('assets/images/welcome.png', height: 320, width: 320),
             SizedBox(height: size.height * 0.02),
-            RoundedButton(
+            RoundedButtonMain(
               text: "LOGIN",
               textColor: Colors.black,
               press: () {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 
-class RoundedButton extends StatefulWidget {
+class RoundedButtonMain extends StatelessWidget {
   final String text;
   final Function press;
   final Color color, textColor;
-  const RoundedButton({
+  const RoundedButtonMain({
     Key key,
     this.text,
     this.press,
@@ -13,15 +13,6 @@ class RoundedButton extends StatefulWidget {
     this.textColor = Colors.white,
   }) : super(key: key);
 
-  @override
-  State<RoundedButton> createState() => RoundedButtonState();
-}
-
-class RoundedButtonState extends State<RoundedButton> {
-  static TextEditingController textName = TextEditingController();
-  static bool validateName = false;
-  static TextEditingController textPassword = TextEditingController();
-  static bool validatePassword = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -34,19 +25,18 @@ class RoundedButtonState extends State<RoundedButton> {
       ),
     );
   }
-
   Widget newElevatedButton() {
     return ElevatedButton(
       child: Text(
-        widget.text,
-        style: TextStyle(color: widget.textColor),
+        text,
+        style: TextStyle(color: textColor),
       ),
-      onPressed: widget.press,
+      onPressed: press,
       style: ElevatedButton.styleFrom(
-          primary: widget.color,
+          primary: color,
           padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
           textStyle: TextStyle(
-              color: widget.textColor, fontSize: 14, fontWeight: FontWeight.w500)),
+              color: textColor, fontSize: 14, fontWeight: FontWeight.w500)),
     );
   }
 }
