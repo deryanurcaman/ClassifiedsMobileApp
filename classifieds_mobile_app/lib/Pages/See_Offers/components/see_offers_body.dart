@@ -15,146 +15,444 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(children: [
-          Container(
-            height: 100,
-            color: three,
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Product Name: ",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Text(
-                "iPhone",
-                style: TextStyle(fontSize: 20),
-              )
-            ]),
-          ),
-          Container(
-            height: 100,
-            color: three,
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Name: ",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Text(
-                "Alex",
-                style: TextStyle(fontSize: 20),
-              )
-            ]),
-          ),
-          Container(
-            height: 100,
-            color: three,
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Surname: ",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Text(
-                "Smith",
-                style: TextStyle(fontSize: 20),
-              )
-            ]),
-          ),
-          Container(
-            height: 100,
-            color: three,
-            child: Row(children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Email: ",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              Text(
-                "alex.smith@gmail.com",
-                style: TextStyle(fontSize: 20),
-              )
-            ]),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 50.0),
-                child: Container(
-                  padding: EdgeInsets.only(top: 40),
-                  height: 100,
-                  width: 120,
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(29),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: four,
-                        fixedSize: Size(200, 50),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return Posts();
-                            },
-                          ),
-                        );
-                      },
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(children: [
+            Container(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(children: [
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Accept",
-                        style: TextStyle(color: one, fontSize: 20),
+                        "Product Name: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
-                  ),
+                    Text(
+                      "iPhone",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Container(
-                  padding: EdgeInsets.only(top: 40),
-                  height: 100,
-                  width: 120,
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(29),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: four,
-                        fixedSize: Size(200, 50),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return Posts();
-                            },
-                          ),
-                        );
-                      },
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "Deny",
-                        style: TextStyle(color: one, fontSize: 20),
+                        "Name: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
+                    Text(
+                      "Alex",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Surname: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "Smith",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Email: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "alex.smith@gmail.com",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  color: three,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 50.0),
+                        child: Container(
+                          height: 50,
+                          width: 120,
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(29),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: four,
+                                fixedSize: Size(200, 50),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Posts();
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Accept",
+                                style: TextStyle(color: one, fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Container(
+                          height: 50,
+                          width: 120,
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(29),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: four,
+                                fixedSize: Size(200, 50),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Posts();
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Deny",
+                                style: TextStyle(color: one, fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ),
-              )
-            ],
+              ]),
+            ),
           ),
-        ]),
+            Container(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(children: [
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Product Name: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "iPhone",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Name: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "Alex",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Surname: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "Smith",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Email: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "alex.smith@gmail.com",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  color: three,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 50.0),
+                        child: Container(
+                          height: 50,
+                          width: 120,
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(29),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: four,
+                                fixedSize: Size(200, 50),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Posts();
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Accept",
+                                style: TextStyle(color: one, fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Container(
+                          height: 50,
+                          width: 120,
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(29),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: four,
+                                fixedSize: Size(200, 50),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Posts();
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Deny",
+                                style: TextStyle(color: one, fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ]),
+            ),
+          ),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(children: [
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Product Name: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "iPhone",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Name: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "Alex",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Surname: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "Smith",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  height: 50,
+                  color: three,
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Email: ",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "alex.smith@gmail.com",
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ]),
+                ),
+                Container(
+                  color: three,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 50.0),
+                        child: Container(
+                          height: 50,
+                          width: 120,
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(29),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: four,
+                                fixedSize: Size(200, 50),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Posts();
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Accept",
+                                style: TextStyle(color: one, fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: Container(
+                          height: 50,
+                          width: 120,
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(29),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: four,
+                                fixedSize: Size(200, 50),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Posts();
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                "Deny",
+                                style: TextStyle(color: one, fontSize: 20),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ]),
+            ),
+          ),
+          ]),
+        ),
       ),
     );
   }
