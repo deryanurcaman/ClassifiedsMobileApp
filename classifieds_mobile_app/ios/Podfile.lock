@@ -2,26 +2,38 @@ PODS:
   - Flutter (1.0.0)
   - image_picker (0.0.1):
     - Flutter
+  - path_provider (0.0.1):
+    - Flutter
   - share (0.0.1):
+    - Flutter
+  - wc_flutter_share (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - share (from `.symlinks/plugins/share/ios`)
+  - wc_flutter_share (from `.symlinks/plugins/wc_flutter_share/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
   share:
     :path: ".symlinks/plugins/share/ios"
+  wc_flutter_share:
+    :path: ".symlinks/plugins/wc_flutter_share/ios"
 
 SPEC CHECKSUMS:
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   image_picker: 9aa50e1d8cdacdbed739e925b7eea16d014367e6
+  path_provider: d1e9807085df1f9cc9318206cd649dc0b76be3de
   share: 0b2c3e82132f5888bccca3351c504d0003b3b410
+  wc_flutter_share: b974e046b82a78e409cc65b3550059b5263cd741
 
 PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 

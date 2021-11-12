@@ -1,8 +1,10 @@
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:wc_flutter_share/wc_flutter_share.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 class AddAndFav extends StatefulWidget {
   const AddAndFav({
@@ -22,38 +24,34 @@ class _AddAndFavState extends State<AddAndFav> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(8),
-          height: 60,
-          width: 60,
-          decoration: BoxDecoration(
-            color: Color(0xFFFF6464),
-            shape: BoxShape.circle,
-          ),
-          child: IconButton(
+        ClipRRect(
+          borderRadius: BorderRadius.circular(35),
+          
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                primary: Colors.redAccent,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              ),
             onPressed: () {
               if (!favorite_products.contains(widget.product)) {
                 favorite_products.add(widget.product);
               }
             },
-            icon: Image.asset(
-              "assets/icons/iheart.png",
-            ),
+            child: Icon(EvaIcons.heart),
           ),
         ),
-        Container(
-          color: four,
-          child: SizedBox(
-              height: 50,
-              width: 50,
-              child: IconButton(
-                icon: Icon(Icons.share),
-                onPressed: () {
-                  _shareImageAndText();
-                },
-                color: one,
-              )),
-        ),
+        ClipRRect(
+            borderRadius: BorderRadius.circular(35),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: four,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              ),
+              child: Icon(Icons.share),
+              onPressed: () {
+                _shareImageAndText();
+              },
+            )),
         SizedBox(
           height: 50,
           width: 200,
@@ -82,12 +80,16 @@ class _AddAndFavState extends State<AddAndFav> {
 
   void _shareImageAndText() async {
     try {
-      final ByteData bytes =
-          await rootBundle.load('assets/images/computer.png');
+      final ByteData bytes = await rootBundle.load(widget.product.image);
       await WcFlutterShare.share(
           sharePopupTitle: 'share',
-          subject: 'This is subject',
-          text: 'This is text',
+          text: "Product: " +
+              widget.product.name +
+              "\n" +
+              "Price:" +
+              widget.product.price +
+              "\n" +
+              widget.product.description,
           fileName: 'share.png',
           mimeType: 'image/png',
           bytesOfFile: bytes.buffer.asUint8List());
