@@ -1,10 +1,10 @@
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:wc_flutter_share/wc_flutter_share.dart';
 
-import '../favorite_products_view.dart';
-
-class AddAndFav extends StatelessWidget {
+class AddAndFav extends StatefulWidget {
   const AddAndFav({
     Key? key,
     required this.product,
@@ -13,36 +13,44 @@ class AddAndFav extends StatelessWidget {
   final Product product;
 
   @override
+  State<AddAndFav> createState() => _AddAndFavState();
+}
+
+class _AddAndFavState extends State<AddAndFav> {
+  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Container(
-          padding: EdgeInsets.all(8),
-          height: 50,
-          width: 50,
-          decoration: BoxDecoration(
-            color: Color(0xFFFF6464),
-            shape: BoxShape.circle,
-          ),
-          child: IconButton(
-            icon: Image.asset(
-              "assets/icons/delete.png",
+        ClipRRect(
+          borderRadius: BorderRadius.circular(35),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.redAccent,
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 17),
             ),
             onPressed: () {
-              favorite_products.remove(product);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return FavoriteProducts();
-                  },
-                ),
-              );
+              if (!favorite_products.contains(widget.product)) {
+                favorite_products.add(widget.product);
+              }
             },
-            iconSize: 50,
+            child: Image.asset(
+              "assets/icons/delete.png",
+            ),
           ),
         ),
+        ClipRRect(
+            borderRadius: BorderRadius.circular(35),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: four,
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              ),
+              child: Icon(Icons.share),
+              onPressed: () {
+                _shareImageAndText();
+              },
+            )),
         SizedBox(
           height: 50,
           width: 200,
@@ -52,8 +60,8 @@ class AddAndFav extends StatelessWidget {
             color: four,
             onPressed: () {
               {
-                if (!offers.contains(product)) {
-                  offers.add(product);
+                if (!offers.contains(widget.product)) {
+                  offers.add(widget.product);
                 }
               }
             },
@@ -69,5 +77,25 @@ class AddAndFav extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void _shareImageAndText() async {
+    try {
+      final ByteData bytes = await rootBundle.load(widget.product.image);
+      await WcFlutterShare.share(
+          sharePopupTitle: 'share',
+          text: "Product: " +
+              widget.product.name +
+              "\n" +
+              "Price:" +
+              widget.product.price +
+              "\n" +
+              widget.product.description,
+          fileName: 'share.png',
+          mimeType: 'image/png',
+          bytesOfFile: bytes.buffer.asUint8List());
+    } catch (e) {
+      print('error: $e');
+    }
   }
 }

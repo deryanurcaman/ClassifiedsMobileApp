@@ -4,7 +4,6 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/services.dart';
 import 'package:wc_flutter_share/wc_flutter_share.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 
 class AddAndFav extends StatefulWidget {
   const AddAndFav({
@@ -26,12 +25,11 @@ class _AddAndFavState extends State<AddAndFav> {
       children: <Widget>[
         ClipRRect(
           borderRadius: BorderRadius.circular(35),
-          
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-                primary: Colors.redAccent,
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              ),
+              primary: Colors.redAccent,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            ),
             onPressed: () {
               if (!favorite_products.contains(widget.product)) {
                 favorite_products.add(widget.product);
