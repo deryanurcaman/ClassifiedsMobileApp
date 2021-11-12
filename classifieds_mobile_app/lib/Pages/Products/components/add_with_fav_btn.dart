@@ -3,7 +3,7 @@ import 'package:classifieds_mobile_app/palette.dart';
 import 'package:share/share.dart';
 import 'package:flutter/material.dart';
 
-class AddAndFav extends StatelessWidget {
+class AddAndFav extends StatefulWidget {
   const AddAndFav({
     Key? key,
     required this.product,
@@ -11,6 +11,11 @@ class AddAndFav extends StatelessWidget {
 
   final Product product;
 
+  @override
+  State<AddAndFav> createState() => _AddAndFavState();
+}
+
+class _AddAndFavState extends State<AddAndFav> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -26,8 +31,8 @@ class AddAndFav extends StatelessWidget {
           ),
           child: IconButton(
             onPressed: () {
-              if (!favorite_products.contains(product)) {
-                favorite_products.add(product);
+              if (!favorite_products.contains(widget.product)) {
+                favorite_products.add(widget.product);
               }
             },
             icon: Image.asset(
@@ -42,7 +47,7 @@ class AddAndFav extends StatelessWidget {
               width: 50,
               child: IconButton(
                 icon: Icon(Icons.share),
-                onPressed: () {},
+                onPressed: () { _onShare(context);},
                 color: one,
               )),
         ),
@@ -54,8 +59,8 @@ class AddAndFav extends StatelessWidget {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             color: four,
             onPressed: () {
-              if (!offers.contains(product)) {
-                offers.add(product);
+              if (!offers.contains(widget.product)) {
+                offers.add(widget.product);
               }
             },
             child: Text(
@@ -70,5 +75,14 @@ class AddAndFav extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  _onShare(BuildContext context)  {
+    final RenderBox box = context.findRenderObject() as RenderBox;
+
+    
+       Share.share(widget.product.image,
+          sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+    
   }
 }
