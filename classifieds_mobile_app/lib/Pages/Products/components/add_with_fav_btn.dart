@@ -1,6 +1,7 @@
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
-import 'package:share/share.dart';
+import 'package:flutter/services.dart';
+import 'package:wc_flutter_share/wc_flutter_share.dart';
 import 'package:flutter/material.dart';
 
 class AddAndFav extends StatefulWidget {
@@ -47,7 +48,9 @@ class _AddAndFavState extends State<AddAndFav> {
               width: 50,
               child: IconButton(
                 icon: Icon(Icons.share),
-                onPressed: () { _onShare(context);},
+                onPressed: () {
+                  _shareImageAndText();
+                },
                 color: one,
               )),
         ),
@@ -77,12 +80,19 @@ class _AddAndFavState extends State<AddAndFav> {
     );
   }
 
-  _onShare(BuildContext context)  {
-    final RenderBox box = context.findRenderObject() as RenderBox;
-
-    
-       Share.share(widget.product.image,
-          sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
-    
+  void _shareImageAndText() async {
+    try {
+      final ByteData bytes =
+          await rootBundle.load('assets/images/computer.png');
+      await WcFlutterShare.share(
+          sharePopupTitle: 'share',
+          subject: 'This is subject',
+          text: 'This is text',
+          fileName: 'share.png',
+          mimeType: 'image/png',
+          bytesOfFile: bytes.buffer.asUint8List());
+    } catch (e) {
+      print('error: $e');
+    }
   }
 }
