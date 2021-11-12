@@ -1,5 +1,6 @@
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
+import 'package:share/share.dart';
 import 'package:flutter/material.dart';
 
 class AddAndFav extends StatelessWidget {
@@ -33,6 +34,17 @@ class AddAndFav extends StatelessWidget {
               "assets/icons/iheart.png",
             ),
           ),
+        ),
+        Container(
+          color: four,
+          child: SizedBox(
+              height: 50,
+              width: 50,
+              child: IconButton(
+                icon: Icon(Icons.share),
+                onPressed: () {},
+                color: one,
+              )),
         ),
         SizedBox(
           height: 50,
