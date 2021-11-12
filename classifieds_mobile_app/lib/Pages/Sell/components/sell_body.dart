@@ -62,7 +62,10 @@ class _BodyState extends State<Body> {
                   child: Column(children: [
                     Row(
                       children: [
-                        Text("Upload Image of The Product:", style: TextStyle(fontSize: 16),),
+                        Text(
+                          "Upload Image of The Product:",
+                          style: TextStyle(fontSize: 16),
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(left: 18.0),
                           child: Container(
@@ -71,13 +74,10 @@ class _BodyState extends State<Body> {
                               borderRadius: BorderRadius.circular(29),
                               child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                      primary: five,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 40, vertical: 20),
-                                      textStyle: TextStyle(
-                                          color: five,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500)),
+                                    primary: four,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 40, vertical: 20),
+                                  ),
                                   onPressed: _pickImage,
                                   child: Icon(
                                     Icons.photo_library,
@@ -96,7 +96,7 @@ class _BodyState extends State<Body> {
                           borderRadius: BorderRadius.circular(29),
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: five,
+                                primary: four,
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 40, vertical: 20),
                               ),
