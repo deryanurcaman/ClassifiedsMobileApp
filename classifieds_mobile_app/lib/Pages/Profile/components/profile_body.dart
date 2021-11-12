@@ -15,14 +15,14 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(25.0),
         child: Column(children: [
           Container(
             height: 100,
             color: three,
             child: Row(children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
                   "Name: ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -35,11 +35,10 @@ class _BodyState extends State<Body> {
             ]),
           ),
           Container(
-            height: 100,
             color: three,
             child: Row(children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
                   "Surname: ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -56,7 +55,7 @@ class _BodyState extends State<Body> {
             color: three,
             child: Row(children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Text(
                   "Email: ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
