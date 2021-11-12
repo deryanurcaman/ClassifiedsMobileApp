@@ -56,42 +56,77 @@ class _BodyState extends State<Body> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              height: 300,
-              width: 200,
-              child: Column(children: [
-                Text("Upload An Image"),
-                FlatButton(
-                    color: five,
-                    onPressed: _pickImage,
-                    child: Icon(
-                      Icons.photo_library,
-                      color: one,
-                    )),
-                FlatButton(
-                    color: four,
-                    onPressed: () {
-                      if (_controllerName != null &&
-                          _controllerPrice != null &&
-                          _controllerDescription != null) {
-                        Product newPost = Product(
-                            name: _controllerName.text,
-                            price: _controllerPrice.text,
-                            description: _controllerDescription.text,
-                            image: "assets/images/no.png",
-                            seller: "Alex",
-                            id: "10");
-                        setState(() {
-                          post_products.add(newPost);
-                          //print(newPost.name);
-                        });
-                      }
-                    },
-                    child: Text(
-                      "Post The Item",
-                      style: TextStyle(color: one),
-                    ))
-              ]),
+            child: Row(
+              children: [
+                Container(
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        Text("Upload Image of The Product:", style: TextStyle(fontSize: 16),),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 18.0),
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 10),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(29),
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: five,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 40, vertical: 20),
+                                      textStyle: TextStyle(
+                                          color: five,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500)),
+                                  onPressed: _pickImage,
+                                  child: Icon(
+                                    Icons.photo_library,
+                                    color: one,
+                                  )),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(29),
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: five,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 40, vertical: 20),
+                              ),
+                              onPressed: () {
+                                if (_controllerName != null &&
+                                    _controllerPrice != null &&
+                                    _controllerDescription != null) {
+                                  Product newPost = Product(
+                                      name: _controllerName.text,
+                                      price: _controllerPrice.text,
+                                      description: _controllerDescription.text,
+                                      image: "assets/images/no.png",
+                                      seller: "Alex",
+                                      id: "10");
+                                  setState(() {
+                                    post_products.add(newPost);
+                                    //print(newPost.name);
+                                  });
+                                }
+                              },
+                              child: Text(
+                                "Post The Item",
+                                style: TextStyle(color: one),
+                              )),
+                        ),
+                      ),
+                    )
+                  ]),
+                ),
+              ],
             ),
           )
         ]),
