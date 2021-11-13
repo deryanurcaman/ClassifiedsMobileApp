@@ -58,7 +58,7 @@ class _FavoriteProductCardState extends State<FavoriteProductCard> {
             ),
           ),
           Text(
-            "\$${widget.product.price + "\$"}",
+            "\$${widget.product.price}",
             style: TextStyle(fontWeight: FontWeight.bold),
           )
         ],

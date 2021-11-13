@@ -52,7 +52,7 @@ class _PostCardState extends State<PostCard> {
             ),
           ),
           Text(
-            "\$${widget.product.price + "\$"}",
+            "\$${widget.product.price}",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ],

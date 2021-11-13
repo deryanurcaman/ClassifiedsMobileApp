@@ -1,3 +1,4 @@
+import 'package:classifieds_mobile_app/Pages/Edit/edit.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
 import 'package:classifieds_mobile_app/Pages/See_Offers/see_offers.dart';
 import 'package:classifieds_mobile_app/palette.dart';
@@ -40,7 +41,15 @@ class _AddAndFavState extends State<AddAndFav> {
                           primary: four,
                           fixedSize: Size(200, 50),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Edit();
+                      },
+                    ),
+                  );},
                       ),
                     ),
                   ),

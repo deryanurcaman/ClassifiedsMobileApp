@@ -58,7 +58,7 @@ class _OfferCardState extends State<OfferCard> {
             ),
           ),
           Text(
-            "\$${widget.product.price + "\$"}",
+            "\$${widget.product.price}",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ],
