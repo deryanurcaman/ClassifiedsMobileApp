@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wc_flutter_share/wc_flutter_share.dart';
 
+import '../favorite_products_view.dart';
+
 class AddAndFav extends StatefulWidget {
   const AddAndFav({
     Key? key,
@@ -31,6 +33,14 @@ class _AddAndFavState extends State<AddAndFav> {
             ),
             onPressed: () {
               favorite_products.remove(widget.product);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return FavoriteProducts();
+                  },
+                ),
+              );
             },
             child: Image.asset(
               "assets/icons/delete.png",
