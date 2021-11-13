@@ -30,9 +30,7 @@ class _AddAndFavState extends State<AddAndFav> {
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 17),
             ),
             onPressed: () {
-              if (!favorite_products.contains(widget.product)) {
-                favorite_products.add(widget.product);
-              }
+              favorite_products.remove(widget.product);
             },
             child: Image.asset(
               "assets/icons/delete.png",
@@ -88,7 +86,8 @@ class _AddAndFavState extends State<AddAndFav> {
               widget.product.name +
               "\n" +
               "Price:" +
-              widget.product.price + "\$" +
+              widget.product.price +
+              "\$" +
               "\n" +
               widget.product.description,
           fileName: 'share.png',
