@@ -29,7 +29,7 @@ class _AddAndFavState extends State<AddAndFav> {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: Colors.redAccent,
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 17),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
             ),
             onPressed: () {
               favorite_products.remove(widget.product);
@@ -44,6 +44,7 @@ class _AddAndFavState extends State<AddAndFav> {
             },
             child: Image.asset(
               "assets/icons/delete.png",
+              height: 25,
             ),
           ),
         ),

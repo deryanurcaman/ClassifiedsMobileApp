@@ -22,7 +22,7 @@ class Body extends StatelessWidget {
           Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(29),
+                borderRadius: BorderRadius.circular(15),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: one,
@@ -50,7 +50,7 @@ class Body extends StatelessWidget {
           Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(29),
+                borderRadius: BorderRadius.circular(15),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: one,
@@ -78,15 +78,15 @@ class Body extends StatelessWidget {
           Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(29),
+                borderRadius: BorderRadius.circular(15),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: one,
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   ),
                   child: ListTile(
-                      title:
-                          Text("Household Goods", style: TextStyle(fontSize: 20)),
+                      title: Text("Household Goods",
+                          style: TextStyle(fontSize: 20)),
                       leading: Image.asset("assets/icons/frame.png")),
                   onPressed: () {
                     Navigator.push(
@@ -106,15 +106,14 @@ class Body extends StatelessWidget {
           Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(29),
+                borderRadius: BorderRadius.circular(15),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: one,
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   ),
                   child: ListTile(
-                      title:
-                          Text("Stationery", style: TextStyle(fontSize: 20)),
+                      title: Text("Stationery", style: TextStyle(fontSize: 20)),
                       leading: Image.asset("assets/icons/stationery.png")),
                   onPressed: () {
                     Navigator.push(
@@ -134,15 +133,14 @@ class Body extends StatelessWidget {
           Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(29),
+                borderRadius: BorderRadius.circular(15),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: one,
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   ),
                   child: ListTile(
-                      title:
-                          Text("Clothes", style: TextStyle(fontSize: 20)),
+                      title: Text("Clothes", style: TextStyle(fontSize: 20)),
                       leading: Image.asset("assets/icons/clothes.png")),
                   onPressed: () {
                     Navigator.push(
@@ -162,15 +160,14 @@ class Body extends StatelessWidget {
           Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(29),
+                borderRadius: BorderRadius.circular(15),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: one,
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   ),
                   child: ListTile(
-                      title:
-                          Text("Sports", style: TextStyle(fontSize: 20)),
+                      title: Text("Sports", style: TextStyle(fontSize: 20)),
                       leading: Image.asset("assets/icons/sport.png")),
                   onPressed: () {
                     Navigator.push(
@@ -190,15 +187,14 @@ class Body extends StatelessWidget {
           Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(29),
+                borderRadius: BorderRadius.circular(15),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: one,
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   ),
                   child: ListTile(
-                      title:
-                          Text("Books", style: TextStyle(fontSize: 20)),
+                      title: Text("Books", style: TextStyle(fontSize: 20)),
                       leading: Image.asset("assets/icons/book.png")),
                   onPressed: () {
                     Navigator.push(
@@ -218,15 +214,14 @@ class Body extends StatelessWidget {
           Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(29),
+                borderRadius: BorderRadius.circular(15),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: one,
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   ),
                   child: ListTile(
-                      title:
-                          Text("Cosmetics", style: TextStyle(fontSize: 20)),
+                      title: Text("Cosmetics", style: TextStyle(fontSize: 20)),
                       leading: Image.asset("assets/icons/cosmetics.png")),
                   onPressed: () {
                     Navigator.push(
