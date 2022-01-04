@@ -137,7 +137,8 @@ class _BodyState extends State<Body> {
                                             _controllerDescription.text,
                                         image: "assets/images/no.png",
                                         seller: "Alex",
-                                        id: "10");
+                                        id: "10",
+                                        type: "electronics");
                                     setState(() {
                                       post_products.add(newPost);
                                       //print(newPost.name);

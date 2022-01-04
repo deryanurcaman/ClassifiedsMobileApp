@@ -5,8 +5,29 @@ import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class Body extends StatelessWidget {
+import '../../../firestore_helper.dart';
+
+class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  List<Product> products = [];
+
+  @override
+  void initState() {
+    if (mounted) {
+      FirestoreHelper.getProductList().then((value) {
+        setState(() {
+          products = value;
+        });
+      });
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +38,7 @@ class Body extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
             child: GridView.builder(
-                itemCount: 6,
+                itemCount: products.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: kDefaultPaddin,

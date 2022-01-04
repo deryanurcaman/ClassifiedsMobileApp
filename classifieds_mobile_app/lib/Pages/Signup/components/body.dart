@@ -11,6 +11,11 @@ import 'package:classifieds_mobile_app/components/account_check.dart';
 import 'package:classifieds_mobile_app/components/rounded_button_login.dart';
 import 'package:classifieds_mobile_app/components/input_field.dart';
 import 'package:classifieds_mobile_app/components/password_field.dart';
+import 'package:uuid/uuid.dart';
+
+import '../../../User.dart';
+import '../../../authentication.dart';
+import '../../../firestore_helper.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -18,6 +23,10 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  late String _userId;
+  String _message = "";
+  late Authentication auth;
+
   var textName2 = RoundedButtonSignupState.textName2;
   var validateName2 = RoundedButtonSignupState.validateName2;
   var textName3 = RoundedButtonSignupState.textName3;
@@ -26,6 +35,13 @@ class _BodyState extends State<Body> {
   var validateName4 = RoundedButtonSignupState.validateName4;
   var textPassword2 = RoundedButtonSignupState.textPassword2;
   var validatePassword2 = RoundedButtonSignupState.validatePassword2;
+
+  @override
+  void initState() {
+    auth = Authentication();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,11 +56,7 @@ class _BodyState extends State<Body> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             SizedBox(height: size.height * 0.01),
-             Image.asset(
-              "assets/images/spaceship.png", 
-              height: 200,
-              width: 200
-            ),
+            Image.asset("assets/images/spaceship.png", height: 200, width: 200),
             SizedBox(height: size.height * 0.03),
             InputField2(
               hintText: "Name",
@@ -67,26 +79,53 @@ class _BodyState extends State<Body> {
             RoundedButtonSignup(
               text: "SIGN UP",
               textColor: Colors.black,
-              press: () {
+              press: () async {
                 setState(() {
-                  textName2.text.isEmpty ? validateName2 = true : validateName2 = false;
-                  textName3.text.isEmpty ? validateName3 = true : validateName3 = false;
-                  textName4.text.isEmpty ? validateName4 = true : validateName4 = false;
-                  textPassword2.text.isEmpty ? validatePassword2 = true : validatePassword2 = false;
+                  textName2.text.isEmpty
+                      ? validateName2 = true
+                      : validateName2 = false;
+                  textName3.text.isEmpty
+                      ? validateName3 = true
+                      : validateName3 = false;
+                  textName4.text.isEmpty
+                      ? validateName4 = true
+                      : validateName4 = false;
+                  textPassword2.text.isEmpty
+                      ? validatePassword2 = true
+                      : validatePassword2 = false;
                 });
-                print(textName2.text);
-                print(textName3.text);
-                print(textName4.text);
-                if(validateName2 == false && validateName3 == false && validateName4 == false && validatePassword2 == false){
-                
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return Home();
-                    },
-                  ),
-                );}
+
+                if (validateName2 == false &&
+                    validateName3 == false &&
+                    validateName4 == false &&
+                    validatePassword2 == false) {
+                  try {
+                    _userId = await auth.signUp(
+                        textName4.text,
+                        textPassword2.text,
+                        textName2.text + ' ' + textName3.text);
+                    setState(() {
+                      // String fullname = textName2.text + ' ' + textName3.text;
+                      // final User_Account newUser = User_Account(
+                      //     id: _userId,
+                      //     fullName: fullname,
+                      //     mail: textName4.text,
+                      //     password: textPassword2.text);
+                      // FirestoreHelper.addNewUser(newUser);
+                    });
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Home();
+                        },
+                      ),
+                    );
+                  } catch (errorMessage) {
+                    _message = errorMessage.toString();
+                  }
+                }
               },
             ),
             SizedBox(height: size.height * 0.02),
@@ -103,7 +142,6 @@ class _BodyState extends State<Body> {
                 );
               },
             ),
-          
           ],
         ),
       ),
