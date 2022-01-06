@@ -1,6 +1,6 @@
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/components/favorite_product_card.dart';
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_product_detail.dart';
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

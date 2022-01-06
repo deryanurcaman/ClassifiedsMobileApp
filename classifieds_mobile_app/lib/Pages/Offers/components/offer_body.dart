@@ -1,6 +1,6 @@
 import 'package:classifieds_mobile_app/Pages/Offers/components/offer_card.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offer_detail.dart';
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

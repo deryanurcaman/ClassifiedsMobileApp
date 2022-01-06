@@ -1,11 +1,11 @@
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
+import 'package:classifieds_mobile_app/models/favorite_product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-import 'User.dart';
+import 'models/User.dart';
 
 class FirestoreHelper {
-  // to be able to access to db from different files without creating FirestoreHelper class instance => static
-  // if a data member is static, it can be accessed without creating an object
   static final FirebaseFirestore db = FirebaseFirestore.instance;
   static Future addNewProduct(Product products) {
     var result = db
@@ -23,9 +23,6 @@ class FirestoreHelper {
     var data = await db.collection('products').get();
     if (data != null) {
       details = data.docs.map((document) => Product.fromMap(document)).toList();
-      // document is a input parameter
-      // convert each document to EventDetail
-      // create a list of EventDetail objects
 
       int i = 0;
       details.forEach((detail) {
@@ -64,5 +61,24 @@ class FirestoreHelper {
       });
     }
     return details;
+  }
+
+  // retrieve data
+  static Future<List<Product>> getMyProductList() async {
+    List<Product> myProducts = [];
+
+    var data = await db
+        .collection('products')
+        .where('seller', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .get();
+
+    myProducts =
+        data.docs.map((document) => Product.fromMap(document)).toList();
+    int i = 0;
+    myProducts.forEach((detail) {
+      detail.id = data.docs[i].id;
+    });
+
+    return myProducts;
   }
 }

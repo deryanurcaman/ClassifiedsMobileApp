@@ -1,4 +1,4 @@
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:flutter/material.dart';
 
 class NumbersWidget extends StatelessWidget {

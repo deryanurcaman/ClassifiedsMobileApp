@@ -3,7 +3,7 @@ import 'package:classifieds_mobile_app/Pages/Home/home_page.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/components/detail_body.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/Pages/Profile/profile.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
 import 'package:classifieds_mobile_app/palette.dart';

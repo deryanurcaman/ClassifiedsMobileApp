@@ -1,4 +1,4 @@
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
 import 'add_with_fav_btn.dart';

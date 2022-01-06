@@ -8,14 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/Pages/Login/login_page.dart';
 import 'package:classifieds_mobile_app/Pages/Signup/components/background.dart';
 import 'package:classifieds_mobile_app/components/account_check.dart';
-import 'package:classifieds_mobile_app/components/rounded_button_login.dart';
-import 'package:classifieds_mobile_app/components/input_field.dart';
-import 'package:classifieds_mobile_app/components/password_field.dart';
-import 'package:uuid/uuid.dart';
 
-import '../../../User.dart';
 import '../../../authentication.dart';
-import '../../../firestore_helper.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -104,15 +98,6 @@ class _BodyState extends State<Body> {
                         textName4.text,
                         textPassword2.text,
                         textName2.text + ' ' + textName3.text);
-                    setState(() {
-                      // String fullname = textName2.text + ' ' + textName3.text;
-                      // final User_Account newUser = User_Account(
-                      //     id: _userId,
-                      //     fullName: fullname,
-                      //     mail: textName4.text,
-                      //     password: textPassword2.text);
-                      // FirestoreHelper.addNewUser(newUser);
-                    });
 
                     Navigator.push(
                       context,

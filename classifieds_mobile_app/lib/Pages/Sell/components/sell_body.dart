@@ -1,7 +1,11 @@
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
+import 'package:classifieds_mobile_app/models/favorite_product.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
+import '../../../firestore_helper.dart';
 import '../../../palette.dart';
 
 class Body extends StatefulWidget {
@@ -14,6 +18,33 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   late PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
+  late String? _selectedFromMeasure;
+
+  List<DropdownMenuItem<String>> menuItems = [
+    const DropdownMenuItem(
+      child: Text("Electronics"),
+      value: "electronics",
+    ),
+    const DropdownMenuItem(
+      child: Text("Household Goods"),
+      value: "household_goods",
+    ),
+    const DropdownMenuItem(
+      child: Text("Books"),
+      value: "books",
+    ),
+    const DropdownMenuItem(
+      child: Text("Sports"),
+      value: "sports",
+    )
+  ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _selectedFromMeasure = null;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +66,20 @@ class _BodyState extends State<Body> {
             ),
             SizedBox(
               height: 24,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 50.0),
+              child: DropdownButton(
+                items: menuItems,
+                hint: Text("Type"),
+                onChanged: (value) {
+                  setState(() {
+                    _selectedFromMeasure = value.toString();
+                  });
+                },
+                value: _selectedFromMeasure,
+                isExpanded: true,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -126,7 +171,7 @@ class _BodyState extends State<Body> {
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 35, vertical: 17),
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
                                   if (_controllerName != null &&
                                       _controllerPrice != null &&
                                       _controllerDescription != null) {
@@ -136,13 +181,12 @@ class _BodyState extends State<Body> {
                                         description:
                                             _controllerDescription.text,
                                         image: "assets/images/no.png",
-                                        seller: "Alex",
-                                        id: "10",
-                                        type: "electronics");
-                                    setState(() {
-                                      post_products.add(newPost);
-                                      //print(newPost.name);
-                                    });
+                                        seller: FirebaseAuth
+                                            .instance.currentUser!.uid,
+                                        id: Uuid().v1(),
+                                        type: _selectedFromMeasure!);
+
+                                    FirestoreHelper.addNewProduct(newPost);
                                   }
                                 },
                                 child: Text(
@@ -154,7 +198,7 @@ class _BodyState extends State<Body> {
                                 )),
                           ),
                         ),
-                      )
+                      ),
                     ]),
                   ),
                 ],

@@ -113,60 +113,6 @@ class Body extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   ),
                   child: ListTile(
-                      title: Text("Stationery", style: TextStyle(fontSize: 20)),
-                      leading: Image.asset("assets/icons/stationery.png")),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Products();
-                        },
-                      ),
-                    );
-                  },
-                ),
-              )),
-          Divider(
-            thickness: 2,
-          ),
-          Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: one,
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                  ),
-                  child: ListTile(
-                      title: Text("Clothes", style: TextStyle(fontSize: 20)),
-                      leading: Image.asset("assets/icons/clothes.png")),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Products();
-                        },
-                      ),
-                    );
-                  },
-                ),
-              )),
-          Divider(
-            thickness: 2,
-          ),
-          Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: one,
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                  ),
-                  child: ListTile(
                       title: Text("Sports", style: TextStyle(fontSize: 20)),
                       leading: Image.asset("assets/icons/sport.png")),
                   onPressed: () {
@@ -196,33 +142,6 @@ class Body extends StatelessWidget {
                   child: ListTile(
                       title: Text("Books", style: TextStyle(fontSize: 20)),
                       leading: Image.asset("assets/icons/book.png")),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Products();
-                        },
-                      ),
-                    );
-                  },
-                ),
-              )),
-          Divider(
-            thickness: 2,
-          ),
-          Container(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: one,
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                  ),
-                  child: ListTile(
-                      title: Text("Cosmetics", style: TextStyle(fontSize: 20)),
-                      leading: Image.asset("assets/icons/cosmetics.png")),
                   onPressed: () {
                     Navigator.push(
                       context,

@@ -17,10 +17,11 @@ class Authentication {
     UserCredential userCredential = await _firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password);
     User? user = userCredential.user;
+    print(user?.uid);
     db
         .collection("users")
         .doc(user?.uid)
-        .set({fullName: fullName, email: email, password: password});
+        .set({"fullName": fullName, "email": email, "password": password});
     return user?.uid ?? "";
   }
 

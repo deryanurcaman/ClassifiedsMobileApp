@@ -1,5 +1,5 @@
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/components/add_with_fav_btn.dart';
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/description.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/product_top.dart';
 import 'package:classifieds_mobile_app/palette.dart';

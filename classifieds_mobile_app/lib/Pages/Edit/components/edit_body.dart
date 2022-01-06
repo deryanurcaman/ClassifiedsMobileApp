@@ -1,5 +1,5 @@
 import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';

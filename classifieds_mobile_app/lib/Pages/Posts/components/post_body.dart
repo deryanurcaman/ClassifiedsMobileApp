@@ -1,9 +1,11 @@
 import 'package:classifieds_mobile_app/Pages/Posts/components/post_card.dart';
 import 'package:classifieds_mobile_app/Pages/Posts/post_detail.dart';
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../../../firestore_helper.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -13,6 +15,20 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  List<Product> post_products = [];
+
+  @override
+  void initState() {
+    if (mounted) {
+      FirestoreHelper.getMyProductList().then((value) {
+        setState(() {
+          post_products = value;
+        });
+      });
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(

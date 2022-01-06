@@ -4,14 +4,13 @@ import 'package:classifieds_mobile_app/Pages/Login/login_page.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
-import 'package:classifieds_mobile_app/firestore_helper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../User.dart';
+import '../../models/User.dart';
 import '../../palette.dart';
 import 'components/numbers_widget copy.dart';
 
@@ -22,14 +21,10 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   static final FirebaseFirestore db = FirebaseFirestore.instance;
-  final user = User_Account(
-      id: "id", fullName: "fullName", mail: "mail", password: "password");
 
-  // late User_Account user;
+  late User_Account user;
 
   int _selectedIndex = 0;
-
-  List<User_Account> users = [];
 
   List<Widget> _widgetOptions = [
     Home(),
@@ -41,29 +36,20 @@ class _ProfileState extends State<Profile> {
 
   @override
   void initState() {
+    // TODO: implement initState
     if (mounted) {
-      FirestoreHelper.getUserList().then((value) {
+      getUser().then((value) {
         setState(() {
-          users = value;
+          user = value;
         });
       });
     }
-
-    // userı çekiyo ama user objes oluşturmuyo
-    var data = db
-        .collection("users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .get();
-
-    var deneme =
-        data.then((document) => User_Account.fromMap(document).fullName);
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    //_getUserName();
     return Scaffold(
         backgroundColor: two,
         appBar: AppBar(
@@ -153,4 +139,13 @@ class _ProfileState extends State<Profile> {
           )
         ],
       );
+
+  static Future<User_Account> getUser() async {
+    var data = await db
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+
+    return User_Account.fromMap(data);
+  }
 }

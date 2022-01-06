@@ -1,4 +1,4 @@
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/product_card.dart';
 import 'package:classifieds_mobile_app/Pages/Products/product_detail.dart';
 import 'package:classifieds_mobile_app/palette.dart';

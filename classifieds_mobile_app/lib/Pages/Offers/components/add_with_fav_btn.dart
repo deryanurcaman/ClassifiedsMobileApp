@@ -1,5 +1,5 @@
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
-import 'package:classifieds_mobile_app/Pages/Products/components/Product.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -102,7 +102,8 @@ class _AddAndFavState extends State<AddAndFav> {
               widget.product.name +
               "\n" +
               "Price:" +
-              widget.product.price + "\$" +
+              widget.product.price +
+              "\$" +
               "\n" +
               widget.product.description,
           fileName: 'share.png',
