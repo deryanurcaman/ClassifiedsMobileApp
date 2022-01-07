@@ -1,4 +1,5 @@
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
+import 'package:classifieds_mobile_app/Pages/See_Offers/see_offers.dart';
 import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class _AddAndFavState extends State<AddAndFav> {
                   fixedSize: Size(200, 50),
                 ),
                 onPressed: () {
-                 // offers.remove(widget.product);
+                  // offers.remove(widget.product);
                   // Navigator.push(
                   //   context,
                   //   MaterialPageRoute(
@@ -57,9 +58,17 @@ class _AddAndFavState extends State<AddAndFav> {
                   //   ),
                   // );
                   FirestoreHelper.deleteOfferedProduct(widget.product.id);
-              
-            },
-              
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return SeeOffers(
+                          product: widget.product,
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
             ),
           ),

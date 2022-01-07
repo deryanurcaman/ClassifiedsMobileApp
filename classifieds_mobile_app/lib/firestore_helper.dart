@@ -110,7 +110,7 @@ class FirestoreHelper {
 
     await Future.forEach(fav_product_ids, (docId) async {
       var data = await db.collection('products').doc(docId.toString()).get();
-      print("Id:" + docId.toString());
+      // print("Id:" + docId.toString());
       details.add(Product.fromMap(data));
     });
 
@@ -155,12 +155,12 @@ class FirestoreHelper {
       querySnapshot.docs.forEach((doc) {
         offered_product_ids.add(doc["product_id"]);
       });
-      print(offered_product_ids);
+      // print(offered_product_ids);
     });
 
     await Future.forEach(offered_product_ids, (docId) async {
       var data = await db.collection('products').doc(docId.toString()).get();
-      print("Id:" + docId.toString());
+      // print("Id:" + docId.toString());
       detailss.add(Product.fromMap(data));
     });
 
@@ -172,6 +172,46 @@ class FirestoreHelper {
         .collection('offered_products')
         .where("product_id", isEqualTo: documentId)
         .where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .get();
+
+    data.docs.forEach((element) async {
+      var doc_id = element.id;
+      await db.collection('offered_products').doc(doc_id).delete();
+    });
+
+    return getOfferedProductList();
+  }
+
+
+  // retrieve data
+   static Future<List<User_Account>> getOffersProductList(String product_id) async {
+    List<User_Account> detailss = [];
+    List offers_product_ids = [];
+
+    await db
+        .collection('offered_products').where('product_id', isEqualTo: product_id)
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        offers_product_ids.add(doc["user_id"]);
+      });
+      //print(offers_product_ids);
+    });
+
+    await Future.forEach(offers_product_ids, (docId) async {
+      var data = await db.collection('users').doc(docId.toString()).get();
+      print("Id:" + docId.toString());
+      detailss.add(User_Account.fromMap(data));
+    });
+
+    return detailss;
+  }
+
+  static Future<List<Product>> deleteOffersProduct(String documentId, String user_id) async {
+    var data = await db
+        .collection('offered_products')
+        .where("product_id", isEqualTo: documentId)
+        .where("user_id", isEqualTo: user_id)
         .get();
 
     data.docs.forEach((element) async {

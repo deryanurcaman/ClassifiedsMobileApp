@@ -92,7 +92,7 @@ class _AddAndFavState extends State<AddAndFav> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return SeeOffers();
+                              return SeeOffers(product: widget.product);
                             },
                           ),
                         );

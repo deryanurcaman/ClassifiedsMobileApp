@@ -1,3 +1,4 @@
+import 'package:classifieds_mobile_app/Pages/Favorite_Products/components/favorite_product_body.dart';
 import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/models/offered_products.dart';
 import 'package:classifieds_mobile_app/palette.dart';
@@ -36,9 +37,17 @@ class _AddAndFavState extends State<AddAndFav> {
             ),
             onPressed: () {
               //favorite_products.remove(widget.product);
-              FirestoreHelper.deleteFavProduct(widget.product.id);
+
               setState(() {
-                products = products;
+                FirestoreHelper.deleteFavProduct(widget.product.id);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return FavoriteProducts();
+                //     },
+                //   ),
+                // );
               });
             },
             child: Image.asset(
@@ -66,13 +75,13 @@ class _AddAndFavState extends State<AddAndFav> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             color: four,
-            onPressed: ()  async {
+            onPressed: () async {
               {
                 OfferedProduct newOfferedProduct = OfferedProduct(
-                   user_id: FirebaseAuth.instance.currentUser!.uid,
-                   product_id: widget.product.id);
+                    user_id: FirebaseAuth.instance.currentUser!.uid,
+                    product_id: widget.product.id);
 
-               FirestoreHelper.addOfferedProduct(newOfferedProduct);
+                FirestoreHelper.addOfferedProduct(newOfferedProduct);
               }
             },
             child: Text(
