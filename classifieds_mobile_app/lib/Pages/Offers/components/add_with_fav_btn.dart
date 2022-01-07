@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wc_flutter_share/wc_flutter_share.dart';
 
+import '../../../firestore_helper.dart';
+
 class AddAndFav extends StatefulWidget {
   const AddAndFav({
     Key? key,
@@ -45,16 +47,19 @@ class _AddAndFavState extends State<AddAndFav> {
                   fixedSize: Size(200, 50),
                 ),
                 onPressed: () {
-                  offers.remove(widget.product);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Offers();
-                      },
-                    ),
-                  );
-                },
+                 // offers.remove(widget.product);
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) {
+                  //       return Offers();
+                  //     },
+                  //   ),
+                  // );
+                  FirestoreHelper.deleteOfferedProduct(widget.product.id);
+              
+            },
+              
               ),
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:classifieds_mobile_app/firestore_helper.dart';
 import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/models/favorite_product.dart';
+import 'package:classifieds_mobile_app/models/offered_products.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -68,9 +69,13 @@ class _AddAndFavState extends State<AddAndFav> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             color: four,
-            onPressed: () {
-              if (!offers.contains(widget.product)) {
-                offers.add(widget.product);
+            onPressed: ()  async {
+              {
+                OfferedProduct newOfferedProduct = OfferedProduct(
+                   user_id: FirebaseAuth.instance.currentUser!.uid,
+                   product_id: widget.product.id);
+
+               FirestoreHelper.addOfferedProduct(newOfferedProduct);
               }
             },
             child: Text(

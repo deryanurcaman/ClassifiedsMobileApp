@@ -11,6 +11,7 @@ class NumbersWidget extends StatefulWidget {
 class _NumbersWidgetState extends State<NumbersWidget> {
   List<Product> favorite_products = [];
   List<Product> post_products = [];
+  List<Product> offers = [];
 
   @override
   void initState() {
@@ -26,6 +27,14 @@ class _NumbersWidgetState extends State<NumbersWidget> {
         post_products = value;
       });
     });
+
+
+    FirestoreHelper.getOfferedProductList().then((value) {
+      setState(() {
+        offers = value;
+      });
+    });
+    
     super.initState();
   }
 

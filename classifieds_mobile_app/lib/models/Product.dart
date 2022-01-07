@@ -123,26 +123,26 @@ List<Product> products = [
 //   ),
 // ];
 
-List<Product> offers = [
-  Product(
-    id: "1",
-    name: "AirPods Pro",
-    price: "234",
-    description: dummyText,
-    image: "assets/images/airpods.jpg",
-    seller: "Alex",
-    type: '',
-  ),
-  Product(
-    id: "2",
-    name: "MacBook Pro 13'' ",
-    price: "94",
-    description: dummyText,
-    image: "assets/images/macbook.jpg",
-    seller: "Sam",
-    type: '',
-  )
-];
+// List<Product> offers = [
+//   Product(
+//     id: "1",
+//     name: "AirPods Pro",
+//     price: "234",
+//     description: dummyText,
+//     image: "assets/images/airpods.jpg",
+//     seller: "Alex",
+//     type: '',
+//   ),
+//   Product(
+//     id: "2",
+//     name: "MacBook Pro 13'' ",
+//     price: "94",
+//     description: dummyText,
+//     image: "assets/images/macbook.jpg",
+//     seller: "Sam",
+//     type: '',
+//   )
+// ];
 
 List<Product> post_products = [
   Product(
