@@ -1,5 +1,6 @@
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/components/favorite_product_card.dart';
 import 'package:classifieds_mobile_app/Pages/Favorite_Products/favorite_product_detail.dart';
+import 'package:classifieds_mobile_app/firestore_helper.dart';
 import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:flutter/foundation.dart';
@@ -13,6 +14,20 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  List<Product> favorite_products = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    FirestoreHelper.getFavProductList().then((value) {
+      setState(() {
+        favorite_products = value;
+      });
+    });
+    ;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(

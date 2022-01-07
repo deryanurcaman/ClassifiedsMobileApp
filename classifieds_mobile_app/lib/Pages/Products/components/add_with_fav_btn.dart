@@ -1,6 +1,9 @@
+import 'package:classifieds_mobile_app/firestore_helper.dart';
 import 'package:classifieds_mobile_app/models/Product.dart';
+import 'package:classifieds_mobile_app/models/favorite_product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:wc_flutter_share/wc_flutter_share.dart';
 import 'package:flutter/material.dart';
@@ -30,10 +33,18 @@ class _AddAndFavState extends State<AddAndFav> {
               primary: Colors.redAccent,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             ),
-            onPressed: () {
-              if (!favorite_products.contains(widget.product)) {
-                favorite_products.add(widget.product);
-              }
+            onPressed: () async {
+              // var deneme = FirestoreHelper.db
+              //     .collection("products")
+              //     .doc(widget.product.id)
+              //     //.where("name", isEqualTo: widget.product.name)
+              //     .get().then((value) => hadi = value.id);
+
+              FavoriteProduct newFavProduct = FavoriteProduct(
+                  user_id: FirebaseAuth.instance.currentUser!.uid,
+                  product_id: widget.product.id);
+
+              FirestoreHelper.addFavProduct(newFavProduct);
             },
             child: Icon(EvaIcons.heart),
           ),

@@ -27,6 +27,7 @@ class FirestoreHelper {
       int i = 0;
       details.forEach((detail) {
         detail.id = data.docs[i].id;
+        i++;
       });
     }
     return details;
@@ -77,8 +78,55 @@ class FirestoreHelper {
     int i = 0;
     myProducts.forEach((detail) {
       detail.id = data.docs[i].id;
+      i++;
     });
 
     return myProducts;
+  }
+
+  static Future addFavProduct(FavoriteProduct fav_products) {
+    var result = db
+        .collection('favorite_products')
+        .add(fav_products.toMap())
+        .then((value) => print(value))
+        .catchError((error) => print(error));
+    return result;
+  }
+
+  // retrieve data
+  static Future<List<Product>> getFavProductList() async {
+    List<Product> details = [];
+    List fav_product_ids = [];
+
+    await db
+        .collection('favorite_products')
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        fav_product_ids.add(doc["product_id"]);
+      });
+    });
+
+    await Future.forEach(fav_product_ids, (docId) async {
+      var data = await db.collection('products').doc(docId.toString()).get();
+      print("Id:" + docId.toString());
+      details.add(Product.fromMap(data));
+    });
+
+    return details;
+  }
+
+  static Future<List<Product>> deleteFavProduct(String documentId) async {
+    var data = await db
+        .collection('favorite_products')
+        .where("product_id", isEqualTo: documentId)
+        .get();
+
+    data.docs.forEach((element) async {
+      var doc_id = element.id;
+      await db.collection('favorite_products').doc(doc_id).delete();
+    });
+
+    return getFavProductList();
   }
 }

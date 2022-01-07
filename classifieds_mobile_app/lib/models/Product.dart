@@ -93,35 +93,35 @@ List<Product> products = [
   ),
 ];
 
-List<Product> favorite_products = [
-  Product(
-    id: "1",
-    name: "AirPods Pro",
-    price: "234",
-    description: dummyText,
-    image: "assets/images/airpods.jpg",
-    seller: "Alex",
-    type: '',
-  ),
-  Product(
-    id: "2",
-    name: "MacBook Pro 13'' ",
-    price: "94",
-    description: dummyText,
-    image: "assets/images/macbook.jpg",
-    seller: "Sam",
-    type: '',
-  ),
-  Product(
-    id: "3",
-    name: "iPhone 13",
-    price: "44",
-    description: dummyText,
-    image: "assets/images/iphone.jpg",
-    seller: "Caroline",
-    type: '',
-  ),
-];
+// List<Product> favorite_products = [
+//   Product(
+//     id: "1",
+//     name: "AirPods Pro",
+//     price: "234",
+//     description: dummyText,
+//     image: "assets/images/airpods.jpg",
+//     seller: "Alex",
+//     type: '',
+//   ),
+//   Product(
+//     id: "2",
+//     name: "MacBook Pro 13'' ",
+//     price: "94",
+//     description: dummyText,
+//     image: "assets/images/macbook.jpg",
+//     seller: "Sam",
+//     type: '',
+//   ),
+//   Product(
+//     id: "3",
+//     name: "iPhone 13",
+//     price: "44",
+//     description: dummyText,
+//     image: "assets/images/iphone.jpg",
+//     seller: "Caroline",
+//     type: '',
+//   ),
+// ];
 
 List<Product> offers = [
   Product(

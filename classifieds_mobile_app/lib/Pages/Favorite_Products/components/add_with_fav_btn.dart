@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wc_flutter_share/wc_flutter_share.dart';
 
+import '../../../firestore_helper.dart';
 import '../favorite_products_view.dart';
 
 class AddAndFav extends StatefulWidget {
@@ -32,15 +33,11 @@ class _AddAndFavState extends State<AddAndFav> {
               padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
             ),
             onPressed: () {
-              favorite_products.remove(widget.product);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return FavoriteProducts();
-                  },
-                ),
-              );
+              //favorite_products.remove(widget.product);
+              FirestoreHelper.deleteFavProduct(widget.product.id);
+              setState(() {
+                products = products;
+              });
             },
             child: Image.asset(
               "assets/icons/delete.png",

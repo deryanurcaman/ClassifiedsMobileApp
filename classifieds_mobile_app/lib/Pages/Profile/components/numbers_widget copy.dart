@@ -1,7 +1,34 @@
 import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:flutter/material.dart';
 
-class NumbersWidget extends StatelessWidget {
+import '../../../firestore_helper.dart';
+
+class NumbersWidget extends StatefulWidget {
+  @override
+  State<NumbersWidget> createState() => _NumbersWidgetState();
+}
+
+class _NumbersWidgetState extends State<NumbersWidget> {
+  List<Product> favorite_products = [];
+  List<Product> post_products = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    FirestoreHelper.getFavProductList().then((value) {
+      setState(() {
+        favorite_products = value;
+      });
+    });
+
+    FirestoreHelper.getMyProductList().then((value) {
+      setState(() {
+        post_products = value;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -14,6 +41,7 @@ class NumbersWidget extends StatelessWidget {
           buildButton(context, offers.length.toString(), 'Offers'),
         ],
       );
+
   Widget buildDivider() => Container(
         height: 24,
         child: VerticalDivider(),
