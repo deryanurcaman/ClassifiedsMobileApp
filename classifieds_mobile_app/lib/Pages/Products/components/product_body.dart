@@ -8,19 +8,25 @@ import 'package:flutter/material.dart';
 import '../../../firestore_helper.dart';
 
 class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+  const Body({
+     Key? key,
+     required this.type,
+   }) : super(key: key);
+
+   final String type;
 
   @override
   State<Body> createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
+  
   List<Product> products = [];
 
   @override
   void initState() {
     if (mounted) {
-      FirestoreHelper.getProductList().then((value) {
+      FirestoreHelper.getProductList(widget.type).then((value) {
         setState(() {
           products = value;
         });

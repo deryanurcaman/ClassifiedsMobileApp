@@ -14,6 +14,12 @@ import 'package:classifieds_mobile_app/palette.dart';
 class Products extends StatefulWidget {
   @override
   State<Products> createState() => _ProductsState();
+  const Products({
+     Key? key,
+     required this.type,
+   }) : super(key: key);
+
+   final String type;
 }
 
 class _ProductsState extends State<Products> {
@@ -51,7 +57,7 @@ class _ProductsState extends State<Products> {
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 15.0),
-          child: Body(),
+          child: Body(type: widget.type),
         ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

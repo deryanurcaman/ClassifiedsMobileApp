@@ -37,7 +37,7 @@ class Body extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return Products();
+                          return Products(type: "all");
                         },
                       ),
                     );
@@ -65,7 +65,7 @@ class Body extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return Products();
+                          return Products(type: "electronics");
                         },
                       ),
                     );
@@ -93,7 +93,7 @@ class Body extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return Products();
+                          return Products(type: "household_goods");
                         },
                       ),
                     );
@@ -120,7 +120,7 @@ class Body extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return Products();
+                          return Products(type: "sports");
                         },
                       ),
                     );
@@ -147,7 +147,7 @@ class Body extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return Products();
+                          return Products(type: "books");
                         },
                       ),
                     );

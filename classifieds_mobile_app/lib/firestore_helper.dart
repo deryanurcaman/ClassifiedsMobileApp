@@ -18,25 +18,44 @@ class FirestoreHelper {
   }
 
   // retrieve data
-  static Future<List<Product>> getProductList() async {
+  static Future<List<Product>> getProductList(String type) async {
     List<Product> details = [];
 
-    var data = await db.collection('products').get();
-    if (data != null) {
-      details = data.docs.map((document) => Product.fromMap(document)).toList();
+    if(type=="all"){
+      
+    }
 
+    
+    
+      if(type=="all"){
+      var data = await db.collection('products').get();
+      details = data.docs.map((document) => Product.fromMap(document)).toList();
       int i = 0;
       details.forEach((detail) {
         detail.id = data.docs[i].id;
         i++;
       });
+      }
+      else{
+      var data = await db.collection('products').where('type', isEqualTo: type).get();
+      details = data.docs.map((document) => Product.fromMap(document)).toList();
+      int i = 0;
+      details.forEach((detail) {
+        detail.id = data.docs[i].id;
+        i++;
+      });
+      }
+      
+    
+    if(type=="all"){
+      
     }
     return details;
   }
 
   static Future<List<Product>> deleteProduct(String documentId) async {
     await db.collection('products').doc(documentId).delete();
-    return getProductList();
+    return getProductList("all");
   }
 
   static Future addNewUser(User_Account users) {
