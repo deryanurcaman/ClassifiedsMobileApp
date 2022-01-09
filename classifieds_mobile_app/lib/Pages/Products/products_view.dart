@@ -38,7 +38,7 @@ class _ProductsState extends State<Products> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: five,
-          title: Text("Electronics"),
+          title: Text(widget.type),
           centerTitle: true,
           actions: [
             IconButton(

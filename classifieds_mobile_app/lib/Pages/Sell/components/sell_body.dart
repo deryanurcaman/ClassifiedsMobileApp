@@ -58,19 +58,19 @@ class _BodyState extends State<Body> {
   List<DropdownMenuItem<String>> menuItems = [
     const DropdownMenuItem(
       child: Text("Electronics"),
-      value: "electronics",
+      value: "Electronics",
     ),
     const DropdownMenuItem(
       child: Text("Household Goods"),
-      value: "household_goods",
+      value: "Household Goods",
     ),
     const DropdownMenuItem(
       child: Text("Books"),
-      value: "books",
+      value: "Books",
     ),
     const DropdownMenuItem(
       child: Text("Sports"),
-      value: "sports",
+      value: "Sports",
     )
   ];
 
@@ -228,7 +228,7 @@ class _BodyState extends State<Body> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return Products(type: "all");
+                                          return Products(type: "All");
                                         },
                                       ),
                                     );

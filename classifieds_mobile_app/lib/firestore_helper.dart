@@ -22,7 +22,7 @@ class FirestoreHelper {
   static Future<List<Product>> getProductList(String type) async {
     List<Product> details = [];
 
-    if (type == "all") {
+    if (type == "All") {
       var data = await db.collection('products').get();
       details = data.docs.map((document) => Product.fromMap(document)).toList();
       int i = 0;
@@ -72,7 +72,7 @@ class FirestoreHelper {
 
   static Future<List<Product>> deleteProduct(String documentId) async {
     await db.collection('products').doc(documentId).delete();
-    return getProductList("all");
+    return getProductList("All");
   }
 
   static Future addNewUser(User_Account users) {
@@ -311,6 +311,6 @@ class FirestoreHelper {
         .then((value) => print("Product Updated"))
         .catchError((error) => print("Failed to update product: $error"));
 
-    return getProductList("all");
+    return getProductList("All");
   }
 }

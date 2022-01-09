@@ -135,8 +135,7 @@ class _BodyState extends State<Body> {
                                   onPressed: () {
                                     setState(() {
                                       FirestoreHelper.editProduct(widget.product.id, nameController.text, priceController.text, descriptionController.text);
-                                      print("denemeeee");
-                                      print(widget.product.id);
+                                      
                                     });
                                     Navigator.push(
                                       context,
