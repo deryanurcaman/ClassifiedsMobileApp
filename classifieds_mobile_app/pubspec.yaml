@@ -36,6 +36,9 @@ dependencies:
   cloud_firestore: ^3.1.5
   uuid: ^3.0.5
 
+  firebase_storage: ^10.2.5
+  firebase_analytics: ^9.0.5
+
   #google_fonts: ^2.1.0
 
   

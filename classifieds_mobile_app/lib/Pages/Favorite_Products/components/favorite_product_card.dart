@@ -38,7 +38,7 @@ class _FavoriteProductCardState extends State<FavoriteProductCard> {
                         decoration: new BoxDecoration(color: Colors.white),
                         alignment: Alignment.center,
                         height: 240,
-                        child: Image.asset(widget.product.image)),
+                        child: Image.network(widget.product.image)),
                     Align(
                         alignment: Alignment.bottomRight,
                         child: IconButton(

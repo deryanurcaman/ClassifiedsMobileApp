@@ -27,7 +27,7 @@ class ProductCard extends StatelessWidget {
               ),
               child: Hero(
                 tag: "${product.id}",
-                child: Image.asset(product.image),
+                child: Image.network(product.image),
               ),
             ),
           ),

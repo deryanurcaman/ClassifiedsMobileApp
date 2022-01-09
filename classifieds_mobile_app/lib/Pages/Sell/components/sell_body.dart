@@ -1,5 +1,5 @@
+import 'package:classifieds_mobile_app/Pages/Products/products_view.dart';
 import 'package:classifieds_mobile_app/models/Product.dart';
-import 'package:classifieds_mobile_app/models/favorite_product.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +7,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 import '../../../firestore_helper.dart';
 import '../../../palette.dart';
+
+import 'dart:io';
+import 'dart:io' as io;
+import 'package:firebase_core/firebase_core.dart' as firebase_core;
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:path/path.dart';
 
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -16,9 +22,38 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  late PickedFile _imageFile;
-  final ImagePicker _picker = ImagePicker();
+  File? _imageFile = null;
+  final picker = ImagePicker();
   late String? _selectedFromMeasure;
+  String imagePath = "uploads/no.png";
+
+  Future uploadImageToFirebase(BuildContext context) async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _imageFile = File(pickedFile!.path);
+    });
+
+    String fileName = basename(_imageFile!.path);
+    firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
+        .ref()
+        .child('uploads')
+        .child('/$fileName');
+
+    final metadata = firebase_storage.SettableMetadata(
+        contentType: 'image/jpeg',
+        customMetadata: {'picked-file-path': fileName});
+    firebase_storage.UploadTask uploadTask;
+    uploadTask = ref.putFile(io.File(_imageFile!.path), metadata);
+
+    firebase_storage.UploadTask task = await Future.value(uploadTask);
+    Future.value(uploadTask).then((value) {
+      imagePath = value.ref.fullPath;
+      print("Upload file path ${value.ref.fullPath}");
+    }).onError((error, stackTrace) {
+      print("Upload file path error ${error.toString()} ");
+    });
+  }
 
   List<DropdownMenuItem<String>> menuItems = [
     const DropdownMenuItem(
@@ -66,6 +101,38 @@ class _BodyState extends State<Body> {
             ),
             SizedBox(
               height: 24,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 50.0),
+              child: Row(
+                children: [
+                  Text(
+                    "Upload Image of The Product:",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 18.0),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(29),
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: four,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 15),
+                            ),
+                            onPressed: () => uploadImageToFirebase(context),
+                            child: Icon(
+                              Icons.photo_library,
+                              color: one,
+                              size: 20,
+                            )),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 50.0),
@@ -129,36 +196,6 @@ class _BodyState extends State<Body> {
                 children: [
                   Container(
                     child: Column(children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Upload Image of The Product:",
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 18.0),
-                            child: Container(
-                              margin: EdgeInsets.symmetric(vertical: 10),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(29),
-                                child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: four,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 15),
-                                    ),
-                                    onPressed: _pickImage,
-                                    child: Icon(
-                                      Icons.photo_library,
-                                      color: one,
-                                      size: 20,
-                                    )),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -180,13 +217,21 @@ class _BodyState extends State<Body> {
                                         price: _controllerPrice.text,
                                         description:
                                             _controllerDescription.text,
-                                        image: "assets/images/no.png",
+                                        image: imagePath,
                                         seller: FirebaseAuth
                                             .instance.currentUser!.uid,
                                         id: Uuid().v1(),
                                         type: _selectedFromMeasure!);
 
                                     FirestoreHelper.addNewProduct(newPost);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Products(type: "all");
+                                        },
+                                      ),
+                                    );
                                   }
                                 },
                                 child: Text(
@@ -210,14 +255,14 @@ class _BodyState extends State<Body> {
     );
   }
 
-  void _pickImage() async {
-    try {
-      final pickedFile = await _picker.getImage(source: ImageSource.gallery);
-      setState(() {
-        _imageFile = pickedFile!;
-      });
-    } catch (e) {
-      print("Image picker error " + e.toString());
-    }
-  }
+  // void _pickImage() async {
+  //   try {
+  //     final pickedFile = await _picker.getImage(source: ImageSource.gallery);
+  //     setState(() {
+  //       _imageFile = pickedFile!;
+  //     });
+  //   } catch (e) {
+  //     print("Image picker error " + e.toString());
+  //   }
+  // }
 }

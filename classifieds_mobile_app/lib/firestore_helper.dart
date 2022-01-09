@@ -3,6 +3,7 @@ import 'package:classifieds_mobile_app/models/favorite_product.dart';
 import 'package:classifieds_mobile_app/models/offered_products.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 import 'models/User.dart';
 
@@ -28,6 +29,11 @@ class FirestoreHelper {
       details.forEach((detail) async {
         detail.id = data.docs[i].id;
         i++;
+        print("önce");
+        final ref = await FirebaseStorage.instance.ref().child(detail.image);
+        detail.image = await ref.getDownloadURL();
+        print("image: " + detail.image);
+        print("sonra");
         await db
             .collection('users')
             .doc(detail.seller)
@@ -39,7 +45,6 @@ class FirestoreHelper {
             detail.seller = seller;
           }
         });
-        
       });
     } else {
       var data =
@@ -60,7 +65,6 @@ class FirestoreHelper {
             detail.seller = seller;
           }
         });
-        
       });
     }
     return details;
@@ -113,6 +117,8 @@ class FirestoreHelper {
     myProducts.forEach((detail) async {
       detail.id = data.docs[i].id;
       i++;
+      final ref = await FirebaseStorage.instance.ref().child(detail.image);
+      detail.image = await ref.getDownloadURL();
       await db
           .collection('users')
           .doc(detail.seller)
@@ -124,7 +130,6 @@ class FirestoreHelper {
           detail.seller = seller;
         }
       });
-      
     });
 
     return myProducts;
@@ -158,6 +163,8 @@ class FirestoreHelper {
       var data = await db.collection('products').doc(docId.toString()).get();
       details.add(Product.fromMap(data));
       details.forEach((element) async {
+        final ref = await FirebaseStorage.instance.ref().child(element.image);
+        element.image = await ref.getDownloadURL();
         await db
             .collection('users')
             .doc(element.seller)
@@ -217,6 +224,8 @@ class FirestoreHelper {
       var data = await db.collection('products').doc(docId.toString()).get();
       details.add(Product.fromMap(data));
       details.forEach((element) async {
+        final ref = await FirebaseStorage.instance.ref().child(element.image);
+        element.image = await ref.getDownloadURL();
         await db
             .collection('users')
             .doc(element.seller)
@@ -289,14 +298,15 @@ class FirestoreHelper {
     return getOfferedProductList();
   }
 
-  static Future<List<Product>> editProduct(String documentId, String name, String price, String description) async {
-    
+  static Future<List<Product>> editProduct(
+      String documentId, String name, String price, String description) async {
     var data = await db
         .collection('products')
         .doc(documentId)
-        .update({'name': name,
-        'price': price,
-        'description': description,
+        .update({
+          'name': name,
+          'price': price,
+          'description': description,
         })
         .then((value) => print("Product Updated"))
         .catchError((error) => print("Failed to update product: $error"));

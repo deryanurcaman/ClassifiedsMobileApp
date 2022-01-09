@@ -12,14 +12,11 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   Future testData() async {
-    // async => while you download the records, you can still interact with the app. Processing in the back ground.
     FirebaseFirestore db = FirebaseFirestore.instance;
-    var data = await db
-        .collection('products') // collection - table
-        .get(); // await => unless my data is downloaded and assigned to the data variable, do not go to the next line.
-    var details = data.docs.toList(); // documents - records - rows
+    var data = await db.collection('products').get();
+    var details = data.docs.toList();
     details.forEach((element) {
-      print(element.id); // document garip id
+      print(element.id);
     });
   }
 
