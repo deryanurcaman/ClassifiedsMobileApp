@@ -27,6 +27,7 @@ class FirestoreHelper {
       int i = 0;
       details.forEach((detail) async {
         detail.id = data.docs[i].id;
+        i++;
         await db
             .collection('users')
             .doc(detail.seller)
@@ -38,7 +39,7 @@ class FirestoreHelper {
             detail.seller = seller;
           }
         });
-        i++;
+        
       });
     } else {
       var data =
@@ -47,6 +48,7 @@ class FirestoreHelper {
       int i = 0;
       details.forEach((detail) async {
         detail.id = data.docs[i].id;
+        i++;
         await db
             .collection('users')
             .doc(detail.seller)
@@ -58,7 +60,7 @@ class FirestoreHelper {
             detail.seller = seller;
           }
         });
-        i++;
+        
       });
     }
     return details;
@@ -90,6 +92,7 @@ class FirestoreHelper {
       int i = 0;
       details.forEach((detail) {
         detail.id = data.docs[i].id;
+        i++;
       });
     }
     return details;
@@ -109,6 +112,7 @@ class FirestoreHelper {
     int i = 0;
     myProducts.forEach((detail) async {
       detail.id = data.docs[i].id;
+      i++;
       await db
           .collection('users')
           .doc(detail.seller)
@@ -120,7 +124,7 @@ class FirestoreHelper {
           detail.seller = seller;
         }
       });
-      i++;
+      
     });
 
     return myProducts;
@@ -259,12 +263,10 @@ class FirestoreHelper {
       querySnapshot.docs.forEach((doc) {
         offers_product_ids.add(doc["user_id"]);
       });
-      //print(offers_product_ids);
     });
 
     await Future.forEach(offers_product_ids, (docId) async {
       var data = await db.collection('users').doc(docId.toString()).get();
-      print("Id:" + docId.toString());
       detailss.add(User_Account.fromMap(data));
     });
 
@@ -285,5 +287,20 @@ class FirestoreHelper {
     });
 
     return getOfferedProductList();
+  }
+
+  static Future<List<Product>> editProduct(String documentId, String name, String price, String description) async {
+    
+    var data = await db
+        .collection('products')
+        .doc(documentId)
+        .update({'name': name,
+        'price': price,
+        'description': description,
+        })
+        .then((value) => print("Product Updated"))
+        .catchError((error) => print("Failed to update product: $error"));
+
+    return getProductList("all");
   }
 }

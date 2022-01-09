@@ -46,7 +46,7 @@ class _AddAndFavState extends State<AddAndFav> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return Edit();
+                                return Edit(product: widget.product);
                               },
                             ),
                           );

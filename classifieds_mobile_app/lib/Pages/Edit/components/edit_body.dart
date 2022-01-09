@@ -1,4 +1,5 @@
 import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
+import 'package:classifieds_mobile_app/firestore_helper.dart';
 import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,12 @@ import 'package:image_picker/image_picker.dart';
 import '../../../palette.dart';
 
 class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+    const Body({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  final Product product;
 
   @override
   State<Body> createState() => _BodyState();
@@ -15,15 +21,25 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   late PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
+  static String namee = "";
+  static String pricee = "";
+  static String descriptionn= "";
 
-  static TextEditingController nameController = TextEditingController()
-    ..text = products[1].name;
+  void initState() {
+  super.initState();
+  namee = widget.product.name;
+  pricee = widget.product.price;
+  descriptionn = widget.product.description;
+}
+
+ static TextEditingController nameController = TextEditingController()
+    ..text = namee;
 
   static TextEditingController priceController = TextEditingController()
-    ..text = products[1].price;
+    ..text = pricee;
 
   static TextEditingController descriptionController = TextEditingController()
-    ..text = products[1].description;
+    ..text = descriptionn;
 
   String newName = "";
   String newPrice = "";
@@ -118,10 +134,9 @@ class _BodyState extends State<Body> {
                                   ),
                                   onPressed: () {
                                     setState(() {
-                                      post_products[1].name = newName;
-                                      post_products[1].price = newPrice;
-                                      post_products[1].description =
-                                          newDescription;
+                                      FirestoreHelper.editProduct(widget.product.id, nameController.text, priceController.text, descriptionController.text);
+                                      print("denemeeee");
+                                      print(widget.product.id);
                                     });
                                     Navigator.push(
                                       context,

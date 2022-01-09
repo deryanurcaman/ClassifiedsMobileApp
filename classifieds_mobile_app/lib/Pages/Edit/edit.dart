@@ -5,13 +5,21 @@ import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
 import 'package:classifieds_mobile_app/Pages/Profile/profile.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
+import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 
 class Edit extends StatefulWidget {
+  const Edit({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  final Product product;
   @override
   State<Edit> createState() => _EditState();
+  
 }
 
 class _EditState extends State<Edit> {
@@ -50,7 +58,7 @@ class _EditState extends State<Edit> {
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 15.0),
-          child: Body(),
+          child: Body(product: widget.product,),
         ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
