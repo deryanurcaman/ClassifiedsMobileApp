@@ -21,34 +21,45 @@ class FirestoreHelper {
   static Future<List<Product>> getProductList(String type) async {
     List<Product> details = [];
 
-    if(type=="all"){
-      
-    }
-
-    
-    
-      if(type=="all"){
+    if (type == "all") {
       var data = await db.collection('products').get();
       details = data.docs.map((document) => Product.fromMap(document)).toList();
       int i = 0;
-      details.forEach((detail) {
+      details.forEach((detail) async {
         detail.id = data.docs[i].id;
+        await db
+            .collection('users')
+            .doc(detail.seller)
+            .get()
+            .then((DocumentSnapshot documentSnapshot) {
+          if (documentSnapshot.exists) {
+            documentSnapshot["fullName"];
+            var seller = documentSnapshot["fullName"];
+            detail.seller = seller;
+          }
+        });
         i++;
       });
-      }
-      else{
-      var data = await db.collection('products').where('type', isEqualTo: type).get();
+    } else {
+      var data =
+          await db.collection('products').where('type', isEqualTo: type).get();
       details = data.docs.map((document) => Product.fromMap(document)).toList();
       int i = 0;
-      details.forEach((detail) {
+      details.forEach((detail) async {
         detail.id = data.docs[i].id;
+        await db
+            .collection('users')
+            .doc(detail.seller)
+            .get()
+            .then((DocumentSnapshot documentSnapshot) {
+          if (documentSnapshot.exists) {
+            documentSnapshot["fullName"];
+            var seller = documentSnapshot["fullName"];
+            detail.seller = seller;
+          }
+        });
         i++;
       });
-      }
-      
-    
-    if(type=="all"){
-      
     }
     return details;
   }
@@ -96,8 +107,19 @@ class FirestoreHelper {
     myProducts =
         data.docs.map((document) => Product.fromMap(document)).toList();
     int i = 0;
-    myProducts.forEach((detail) {
+    myProducts.forEach((detail) async {
       detail.id = data.docs[i].id;
+      await db
+          .collection('users')
+          .doc(detail.seller)
+          .get()
+          .then((DocumentSnapshot documentSnapshot) {
+        if (documentSnapshot.exists) {
+          documentSnapshot["fullName"];
+          var seller = documentSnapshot["fullName"];
+          detail.seller = seller;
+        }
+      });
       i++;
     });
 
@@ -119,7 +141,8 @@ class FirestoreHelper {
     List fav_product_ids = [];
 
     await db
-        .collection('favorite_products').where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .collection('favorite_products')
+        .where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
         .get()
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
@@ -129,10 +152,21 @@ class FirestoreHelper {
 
     await Future.forEach(fav_product_ids, (docId) async {
       var data = await db.collection('products').doc(docId.toString()).get();
-      // print("Id:" + docId.toString());
       details.add(Product.fromMap(data));
+      details.forEach((element) async {
+        await db
+            .collection('users')
+            .doc(element.seller)
+            .get()
+            .then((DocumentSnapshot documentSnapshot) {
+          if (documentSnapshot.exists) {
+            documentSnapshot["fullName"];
+            var seller = documentSnapshot["fullName"];
+            element.seller = seller;
+          }
+        });
+      });
     });
-
     return details;
   }
 
@@ -151,8 +185,6 @@ class FirestoreHelper {
     return getFavProductList();
   }
 
-
-
   static Future addOfferedProduct(OfferedProduct offered_products) {
     var result = db
         .collection('offered_products')
@@ -163,27 +195,39 @@ class FirestoreHelper {
   }
 
   // retrieve data
-   static Future<List<Product>> getOfferedProductList() async {
-    List<Product> detailss = [];
+  static Future<List<Product>> getOfferedProductList() async {
+    List<Product> details = [];
     List offered_product_ids = [];
 
     await db
-        .collection('offered_products').where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .collection('offered_products')
+        .where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid)
         .get()
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
         offered_product_ids.add(doc["product_id"]);
       });
-      // print(offered_product_ids);
     });
 
     await Future.forEach(offered_product_ids, (docId) async {
       var data = await db.collection('products').doc(docId.toString()).get();
-      // print("Id:" + docId.toString());
-      detailss.add(Product.fromMap(data));
+      details.add(Product.fromMap(data));
+      details.forEach((element) async {
+        await db
+            .collection('users')
+            .doc(element.seller)
+            .get()
+            .then((DocumentSnapshot documentSnapshot) {
+          if (documentSnapshot.exists) {
+            documentSnapshot["fullName"];
+            var seller = documentSnapshot["fullName"];
+            element.seller = seller;
+          }
+        });
+      });
     });
 
-    return detailss;
+    return details;
   }
 
   static Future<List<Product>> deleteOfferedProduct(String documentId) async {
@@ -201,14 +245,15 @@ class FirestoreHelper {
     return getOfferedProductList();
   }
 
-
   // retrieve data
-   static Future<List<User_Account>> getOffersProductList(String product_id) async {
+  static Future<List<User_Account>> getOffersProductList(
+      String product_id) async {
     List<User_Account> detailss = [];
     List offers_product_ids = [];
 
     await db
-        .collection('offered_products').where('product_id', isEqualTo: product_id)
+        .collection('offered_products')
+        .where('product_id', isEqualTo: product_id)
         .get()
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
@@ -226,7 +271,8 @@ class FirestoreHelper {
     return detailss;
   }
 
-  static Future<List<Product>> deleteOffersProduct(String documentId, String user_id) async {
+  static Future<List<Product>> deleteOffersProduct(
+      String documentId, String user_id) async {
     var data = await db
         .collection('offered_products')
         .where("product_id", isEqualTo: documentId)
