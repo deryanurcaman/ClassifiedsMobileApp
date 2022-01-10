@@ -25,47 +25,44 @@ class FirestoreHelper {
     if (type == "All") {
       var data = await db.collection('products').get();
       details = data.docs.map((document) => Product.fromMap(document)).toList();
-      int i = 0;
-      details.forEach((detail) async {
-        detail.id = data.docs[i].id;
-        i++;
-        print("önce");
-        final ref = await FirebaseStorage.instance.ref().child(detail.image);
-        detail.image = await ref.getDownloadURL();
-        print("image: " + detail.image);
-        print("sonra");
+      for (var i = 0; i < details.length; i++) {
+        details[i].id = data.docs[i].id;
         await db
             .collection('users')
-            .doc(detail.seller)
+            .doc(details[i].seller)
             .get()
             .then((DocumentSnapshot documentSnapshot) {
           if (documentSnapshot.exists) {
             documentSnapshot["fullName"];
             var seller = documentSnapshot["fullName"];
-            detail.seller = seller;
+            details[i].seller = seller;
           }
         });
-      });
+        final ref =
+            await FirebaseStorage.instance.ref().child(details[i].image);
+        details[i].image = await ref.getDownloadURL();
+      }
     } else {
       var data =
           await db.collection('products').where('type', isEqualTo: type).get();
       details = data.docs.map((document) => Product.fromMap(document)).toList();
-      int i = 0;
-      details.forEach((detail) async {
-        detail.id = data.docs[i].id;
-        i++;
+      for (var i = 0; i < details.length; i++) {
+        details[i].id = data.docs[i].id;
         await db
             .collection('users')
-            .doc(detail.seller)
+            .doc(details[i].seller)
             .get()
             .then((DocumentSnapshot documentSnapshot) {
           if (documentSnapshot.exists) {
             documentSnapshot["fullName"];
             var seller = documentSnapshot["fullName"];
-            detail.seller = seller;
+            details[i].seller = seller;
           }
         });
-      });
+        final ref =
+            await FirebaseStorage.instance.ref().child(details[i].image);
+        details[i].image = await ref.getDownloadURL();
+      }
     }
     return details;
   }
@@ -113,24 +110,24 @@ class FirestoreHelper {
 
     myProducts =
         data.docs.map((document) => Product.fromMap(document)).toList();
-    int i = 0;
-    myProducts.forEach((detail) async {
-      detail.id = data.docs[i].id;
-      i++;
-      final ref = await FirebaseStorage.instance.ref().child(detail.image);
-      detail.image = await ref.getDownloadURL();
+    for (var i = 0; i < myProducts.length; i++) {
+      myProducts[i].id = data.docs[i].id;
+
       await db
           .collection('users')
-          .doc(detail.seller)
+          .doc(myProducts[i].seller)
           .get()
           .then((DocumentSnapshot documentSnapshot) {
         if (documentSnapshot.exists) {
           documentSnapshot["fullName"];
           var seller = documentSnapshot["fullName"];
-          detail.seller = seller;
+          myProducts[i].seller = seller;
         }
       });
-    });
+      final ref =
+          await FirebaseStorage.instance.ref().child(myProducts[i].image);
+      myProducts[i].image = await ref.getDownloadURL();
+    }
 
     return myProducts;
   }
@@ -158,26 +155,26 @@ class FirestoreHelper {
         fav_product_ids.add(doc["product_id"]);
       });
     });
-
-    await Future.forEach(fav_product_ids, (docId) async {
-      var data = await db.collection('products').doc(docId.toString()).get();
+    for (var i = 0; i < fav_product_ids.length; i++) {
+      var data = await db.collection('products').doc(fav_product_ids[i]).get();
       details.add(Product.fromMap(data));
-      details.forEach((element) async {
-        final ref = await FirebaseStorage.instance.ref().child(element.image);
-        element.image = await ref.getDownloadURL();
-        await db
-            .collection('users')
-            .doc(element.seller)
-            .get()
-            .then((DocumentSnapshot documentSnapshot) {
-          if (documentSnapshot.exists) {
-            documentSnapshot["fullName"];
-            var seller = documentSnapshot["fullName"];
-            element.seller = seller;
-          }
-        });
+
+      await db
+          .collection('users')
+          .doc(details[i].seller)
+          .get()
+          .then((DocumentSnapshot documentSnapshot) {
+        if (documentSnapshot.exists) {
+          documentSnapshot["fullName"];
+          var seller = documentSnapshot["fullName"];
+          details[i].seller = seller;
+        }
       });
-    });
+
+      final ref = await FirebaseStorage.instance.ref().child(details[i].image);
+      details[i].image = await ref.getDownloadURL();
+    }
+
     return details;
   }
 
@@ -220,26 +217,25 @@ class FirestoreHelper {
       });
     });
 
-    await Future.forEach(offered_product_ids, (docId) async {
-      var data = await db.collection('products').doc(docId.toString()).get();
+    for (var i = 0; i < offered_product_ids.length; i++) {
+      var data =
+          await db.collection('products').doc(offered_product_ids[i]).get();
       details.add(Product.fromMap(data));
-      details.forEach((element) async {
-        final ref = await FirebaseStorage.instance.ref().child(element.image);
-        element.image = await ref.getDownloadURL();
-        await db
-            .collection('users')
-            .doc(element.seller)
-            .get()
-            .then((DocumentSnapshot documentSnapshot) {
-          if (documentSnapshot.exists) {
-            documentSnapshot["fullName"];
-            var seller = documentSnapshot["fullName"];
-            element.seller = seller;
-          }
-        });
-      });
-    });
 
+      final ref = await FirebaseStorage.instance.ref().child(details[i].image);
+      details[i].image = await ref.getDownloadURL();
+      await db
+          .collection('users')
+          .doc(details[i].seller)
+          .get()
+          .then((DocumentSnapshot documentSnapshot) {
+        if (documentSnapshot.exists) {
+          documentSnapshot["fullName"];
+          var seller = documentSnapshot["fullName"];
+          details[i].seller = seller;
+        }
+      });
+    }
     return details;
   }
 

@@ -37,7 +37,7 @@ class _PostCardState extends State<PostCard> {
                         decoration: new BoxDecoration(color: Colors.white),
                         alignment: Alignment.center,
                         height: 240,
-                        child: Image.asset(widget.product.image)),
+                        child: Image.network(widget.product.image)),
                     Align(
                       alignment: Alignment.bottomRight,
                     ),

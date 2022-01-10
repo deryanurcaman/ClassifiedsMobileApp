@@ -1,6 +1,5 @@
 import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/palette.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
@@ -14,7 +13,6 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    downloadURLExample(product.image);
     return GestureDetector(
       onTap: press,
       child: Column(
@@ -29,8 +27,7 @@ class ProductCard extends StatelessWidget {
               ),
               child: Hero(
                 tag: "${product.id}",
-                child:
-                    Image.network(downloadURLExample(product.image).toString()),
+                child: Image.network(product.image),
               ),
             ),
           ),
@@ -48,22 +45,5 @@ class ProductCard extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Future<String> downloadURLExample(String image) async {
-    String downloadURL =
-        await FirebaseStorage.instance.ref(image).getDownloadURL();
-    return downloadURL;
-  }
-
-  getImage(String image) async {
-    print("önce");
-    try {
-      String url = (await FirebaseStorage.instance.ref(image).getDownloadURL())
-          .toString();
-      return url;
-    } catch (e) {
-      print(e);
-    }
   }
 }
