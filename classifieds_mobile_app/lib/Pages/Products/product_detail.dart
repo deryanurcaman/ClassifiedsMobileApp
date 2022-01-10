@@ -6,8 +6,11 @@ import 'package:classifieds_mobile_app/models/Product.dart';
 import 'package:classifieds_mobile_app/Pages/Products/components/detail_body.dart';
 import 'package:classifieds_mobile_app/Pages/Profile/profile.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
+import 'package:classifieds_mobile_app/models/User.dart';
 import 'package:classifieds_mobile_app/palette.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -29,6 +32,23 @@ class _DetailsScreenState extends State<DetailsScreen> {
     Offers(),
     Posts(),
   ];
+  static final FirebaseFirestore db = FirebaseFirestore.instance;
+
+  late User_Account user;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    if (mounted) {
+      getUser().then((value) {
+        setState(() {
+          user = value;
+        });
+      });
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +64,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return Profile();
+                        return Profile(
+                          user: user,
+                        );
                       },
                     ),
                   );
@@ -88,5 +110,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 icon: new Icon(EvaIcons.image), title: new Text("My Posts")),
           ],
         ));
+  }
+
+  static Future<User_Account> getUser() async {
+    User_Account user;
+    var data = await db
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    user = await User_Account.fromMap(data);
+    return user;
   }
 }

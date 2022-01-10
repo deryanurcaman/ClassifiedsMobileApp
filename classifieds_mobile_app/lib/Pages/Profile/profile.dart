@@ -4,9 +4,7 @@ import 'package:classifieds_mobile_app/Pages/Login/login_page.dart';
 import 'package:classifieds_mobile_app/Pages/Offers/offers_view.dart';
 import 'package:classifieds_mobile_app/Pages/Posts/posts_view.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,15 +13,17 @@ import '../../palette.dart';
 import 'components/numbers_widget copy.dart';
 
 class Profile extends StatefulWidget {
+  const Profile({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
+
+  final User_Account user;
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
-  static final FirebaseFirestore db = FirebaseFirestore.instance;
-
-  late User_Account user;
-
   int _selectedIndex = 0;
 
   List<Widget> _widgetOptions = [
@@ -33,20 +33,6 @@ class _ProfileState extends State<Profile> {
     Offers(),
     Posts(),
   ];
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    if (mounted) {
-      getUser().then((value) {
-        setState(() {
-          user = value;
-        });
-      });
-    }
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +46,7 @@ class _ProfileState extends State<Profile> {
         ),
         body: Column(children: [
           const SizedBox(height: 150),
-          buildName(user),
+          buildName(widget.user),
           const SizedBox(height: 48),
           NumbersWidget(),
           const SizedBox(height: 100),
@@ -139,13 +125,4 @@ class _ProfileState extends State<Profile> {
           )
         ],
       );
-
-  static Future<User_Account> getUser() async {
-    var data = await db
-        .collection("users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .get();
-
-    return User_Account.fromMap(data);
-  }
 }

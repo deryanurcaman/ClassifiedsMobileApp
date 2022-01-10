@@ -6,12 +6,14 @@ import 'package:classifieds_mobile_app/Pages/Profile/profile.dart';
 import 'package:classifieds_mobile_app/Pages/See_Offers/components/see_offers_body.dart';
 import 'package:classifieds_mobile_app/Pages/Sell/sell.dart';
 import 'package:classifieds_mobile_app/models/Product.dart';
+import 'package:classifieds_mobile_app/models/User.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:classifieds_mobile_app/palette.dart';
 
 class SeeOffers extends StatefulWidget {
-
   const SeeOffers({
     Key? key,
     required this.product,
@@ -32,6 +34,23 @@ class _SeeOffersState extends State<SeeOffers> {
     Offers(),
     Posts(),
   ];
+  static final FirebaseFirestore db = FirebaseFirestore.instance;
+
+  late User_Account user;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    if (mounted) {
+      getUser().then((value) {
+        setState(() {
+          user = value;
+        });
+      });
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +67,9 @@ class _SeeOffersState extends State<SeeOffers> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return Profile();
+                        return Profile(
+                          user: user,
+                        );
                       },
                     ),
                   );
@@ -93,5 +114,15 @@ class _SeeOffersState extends State<SeeOffers> {
                 icon: new Icon(EvaIcons.image), title: new Text("My Posts")),
           ],
         ));
+  }
+
+  static Future<User_Account> getUser() async {
+    User_Account user;
+    var data = await db
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    user = await User_Account.fromMap(data);
+    return user;
   }
 }
