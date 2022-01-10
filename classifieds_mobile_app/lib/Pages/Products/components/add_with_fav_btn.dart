@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:wc_flutter_share/wc_flutter_share.dart';
 import 'package:flutter/material.dart';
 
+
 class AddAndFav extends StatefulWidget {
   const AddAndFav({
     Key? key,
@@ -35,12 +36,7 @@ class _AddAndFavState extends State<AddAndFav> {
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             ),
             onPressed: () async {
-              // var deneme = FirestoreHelper.db
-              //     .collection("products")
-              //     .doc(widget.product.id)
-              //     //.where("name", isEqualTo: widget.product.name)
-              //     .get().then((value) => hadi = value.id);
-
+            
               FavoriteProduct newFavProduct = FavoriteProduct(
                   user_id: FirebaseAuth.instance.currentUser!.uid,
                   product_id: widget.product.id);
@@ -94,7 +90,7 @@ class _AddAndFavState extends State<AddAndFav> {
 
   void _shareImageAndText() async {
     try {
-      final ByteData bytes = await rootBundle.load(widget.product.image);
+      final ByteData bytes = await NetworkAssetBundle(Uri.parse(widget.product.image)).load("");
       await WcFlutterShare.share(
           sharePopupTitle: 'share',
           text: "Product: " +
@@ -112,4 +108,6 @@ class _AddAndFavState extends State<AddAndFav> {
       print('error: $e');
     }
   }
+  
+
 }
