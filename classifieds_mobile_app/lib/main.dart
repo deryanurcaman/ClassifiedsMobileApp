@@ -15,9 +15,7 @@ class MyApp extends StatelessWidget {
     FirebaseFirestore db = FirebaseFirestore.instance;
     var data = await db.collection('products').get();
     var details = data.docs.toList();
-    details.forEach((element) {
-      // print(element.id);
-    });
+    details.forEach((element) {});
   }
 
   @override

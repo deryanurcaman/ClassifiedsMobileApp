@@ -6,7 +6,7 @@ import 'package:classifieds_mobile_app/palette.dart';
 class PasswordField2 extends StatefulWidget {
   final ValueChanged<String> onChanged;
   const PasswordField2({
-    Key ? key,
+    Key? key,
     required this.onChanged,
   }) : super(key: key);
 
@@ -15,7 +15,7 @@ class PasswordField2 extends StatefulWidget {
 }
 
 class _PasswordField2State extends State<PasswordField2> {
- var textPassword2 = RoundedButtonSignupState.textPassword2;
+  var textPassword2 = RoundedButtonSignupState.textPassword2;
   var validatePassword2 = RoundedButtonSignupState.validatePassword2;
   @override
   Widget build(BuildContext context) {
@@ -29,10 +29,6 @@ class _PasswordField2State extends State<PasswordField2> {
           hintText: "Password",
           icon: Icon(
             Icons.lock,
-            color: two,
-          ),
-          suffixIcon: Icon(
-            Icons.visibility,
             color: two,
           ),
           border: InputBorder.none,

@@ -58,8 +58,8 @@ class _BodyState extends State<Body> {
                         style: ElevatedButton.styleFrom(primary: five),
                         onPressed: () {
                           setState(() {
-                            FirestoreHelper.deleteOfferedProduct(
-                                widget.product.id);
+                            FirestoreHelper.deleteOffersProduct(
+                                widget.product.id, users[index].id);
                             FirestoreHelper.deleteFavProduct(widget.product.id);
                             FirestoreHelper.deleteProduct(widget.product.id);
                             Navigator.push(
