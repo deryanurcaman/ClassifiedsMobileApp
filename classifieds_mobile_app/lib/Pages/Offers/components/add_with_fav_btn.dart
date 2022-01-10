@@ -58,16 +58,7 @@ class _AddAndFavState extends State<AddAndFav> {
                   //   ),
                   // );
                   FirestoreHelper.deleteOfferedProduct(widget.product.id);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SeeOffers(
-                          product: widget.product,
-                        );
-                      },
-                    ),
-                  );
+                  
                 },
               ),
             ),
