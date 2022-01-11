@@ -10,7 +10,6 @@ import '../../../palette.dart';
 
 import 'dart:io';
 import 'dart:io' as io;
-import 'package:firebase_core/firebase_core.dart' as firebase_core;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:path/path.dart';
 

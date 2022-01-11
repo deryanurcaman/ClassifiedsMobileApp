@@ -6,8 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../palette.dart';
 
+import 'dart:io';
+import 'dart:io' as io;
+import 'package:firebase_core/firebase_core.dart' as firebase_core;
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:path/path.dart';
+
 class Body extends StatefulWidget {
-    const Body({
+  const Body({
     Key? key,
     required this.product,
   }) : super(key: key);
@@ -19,20 +25,22 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  late PickedFile _imageFile;
-  final ImagePicker _picker = ImagePicker();
+  File? _imageFile = null;
+  final picker = ImagePicker();
   static String namee = "";
   static String pricee = "";
-  static String descriptionn= "";
+  static String descriptionn = "";
+  late String imagePath;
 
   void initState() {
-  super.initState();
-  namee = widget.product.name;
-  pricee = widget.product.price;
-  descriptionn = widget.product.description;
-}
+    super.initState();
+    namee = widget.product.name;
+    pricee = widget.product.price;
+    descriptionn = widget.product.description;
+    imagePath = widget.product.image;
+  }
 
- static TextEditingController nameController = TextEditingController()
+  static TextEditingController nameController = TextEditingController()
     ..text = namee;
 
   static TextEditingController priceController = TextEditingController()
@@ -110,7 +118,8 @@ class _BodyState extends State<Body> {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 40, vertical: 20),
                                       ),
-                                      onPressed: _pickImage,
+                                      onPressed: () =>
+                                          uploadImageToFirebase(context),
                                       child: Icon(
                                         Icons.photo_library,
                                         color: one,
@@ -134,8 +143,12 @@ class _BodyState extends State<Body> {
                                   ),
                                   onPressed: () {
                                     setState(() {
-                                      FirestoreHelper.editProduct(widget.product.id, nameController.text, priceController.text, descriptionController.text);
-                                      
+                                      FirestoreHelper.editProduct(
+                                          widget.product.id,
+                                          nameController.text,
+                                          priceController.text,
+                                          descriptionController.text,
+                                          imagePath);
                                     });
                                     Navigator.push(
                                       context,
@@ -165,14 +178,31 @@ class _BodyState extends State<Body> {
     );
   }
 
-  void _pickImage() async {
-    try {
-      final pickedFile = await _picker.getImage(source: ImageSource.gallery);
-      setState(() {
-        _imageFile = pickedFile!;
-      });
-    } catch (e) {
-      print("Image picker error " + e.toString());
-    }
+  Future uploadImageToFirebase(BuildContext context) async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _imageFile = File(pickedFile!.path);
+    });
+
+    String fileName = basename(_imageFile!.path);
+    firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance
+        .ref()
+        .child('uploads')
+        .child('/$fileName');
+
+    final metadata = firebase_storage.SettableMetadata(
+        contentType: 'image/jpeg',
+        customMetadata: {'picked-file-path': fileName});
+    firebase_storage.UploadTask uploadTask;
+    uploadTask = ref.putFile(io.File(_imageFile!.path), metadata);
+
+    firebase_storage.UploadTask task = await Future.value(uploadTask);
+    Future.value(uploadTask).then((value) {
+      imagePath = value.ref.fullPath;
+      print("Upload file path ${value.ref.fullPath}");
+    }).onError((error, stackTrace) {
+      print("Upload file path error ${error.toString()} ");
+    });
   }
 }
