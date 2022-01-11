@@ -147,8 +147,7 @@ class _BodyState extends State<Body> {
                                           widget.product.id,
                                           nameController.text,
                                           priceController.text,
-                                          descriptionController.text,
-                                          imagePath);
+                                          descriptionController.text);
                                     });
                                     Navigator.push(
                                       context,

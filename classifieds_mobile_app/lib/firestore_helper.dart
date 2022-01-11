@@ -294,8 +294,8 @@ class FirestoreHelper {
     return getOfferedProductList();
   }
 
-  static Future<List<Product>> editProduct(String documentId, String name,
-      String price, String description, String image) async {
+  static Future<List<Product>> editProduct(
+      String documentId, String name, String price, String description) async {
     var data = await db
         .collection('products')
         .doc(documentId)
@@ -303,7 +303,6 @@ class FirestoreHelper {
           'name': name,
           'price': price,
           'description': description,
-          'image': image,
         })
         .then((value) => print("Product Updated"))
         .catchError((error) => print("Failed to update product: $error"));
