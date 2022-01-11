@@ -108,15 +108,15 @@ class _AddAndFavState extends State<AddAndFav> {
     );
   }
 
-  void _shareImageAndText() async {
+ void _shareImageAndText() async {
     try {
-      final ByteData bytes = await rootBundle.load(widget.product.image);
+      final ByteData bytes = await NetworkAssetBundle(Uri.parse(widget.product.image)).load("");
       await WcFlutterShare.share(
           sharePopupTitle: 'share',
           text: "Product: " +
               widget.product.name +
               "\n" +
-              "Price: " +
+              "Price:" +
               widget.product.price +
               "\$" +
               "\n" +
