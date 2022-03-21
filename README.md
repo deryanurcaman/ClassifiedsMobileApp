@@ -34,30 +34,30 @@ flutter pub get
 
 ## Gallery
 
-![](readmeassets/1.png)
+![](classifieds_mobile_app/readmeassets/1.png)
 
-![](readmeassets/2.png)
+![](classifieds_mobile_app/readmeassets/2.png)
 
-![](readmeassets/3.png)
+![](classifieds_mobile_app/readmeassets/3.png)
 
-![](readmeassets/4.png)
+![](classifieds_mobile_app/readmeassets/4.png)
 
-![](readmeassets/5.png)
+![](classifieds_mobile_app/readmeassets/5.png)
 
-![](readmeassets/6.png)
+![](classifieds_mobile_app/readmeassets/6.png)
 
-![](readmeassets/7.png)
+![](classifieds_mobile_app/readmeassets/7.png)
 
-![](readmeassets/8.png)
+![](classifieds_mobile_app/readmeassets/8.png)
 
-![](readmeassets/9.png)
+![](classifieds_mobile_app/readmeassets/9.png)
 
-![](readmeassets/10.png)
+![](classifieds_mobile_app/readmeassets/10.png)
 
-![](readmeassets/11.png)
+![](classifieds_mobile_app/readmeassets/11.png)
 
-![](readmeassets/12.png)
+![](classifieds_mobile_app/readmeassets/12.png)
 
-![](readmeassets/13.png)
+![](classifieds_mobile_app/readmeassets/13.png)
 
-![](readmeassets/14.png)
+![](classifieds_mobile_app/readmeassets/14.png)
