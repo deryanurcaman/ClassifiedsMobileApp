@@ -1,4 +1,4 @@
-# ClassifiedsMobileApp
+# Classifieds Mobile App with Flutter and Firebase
 
 This project is an e-commercial project where users can both sell and buy products that they log in as both sellers and buyers
 
